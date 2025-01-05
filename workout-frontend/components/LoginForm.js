@@ -5,7 +5,7 @@ app.component('login-form',{
     <form class="login-form" @submit.prevent="onSubmit">
         <h3>Login</h3>
         <input id="name" v-model="name">
-        <input id="passkey" v-model="passkey">
+        <input id="passkey" v-model="passkey" type="password">
         <input class="button" type="submit" value="Submit">
     </form>
     `,
@@ -19,7 +19,25 @@ app.component('login-form',{
 
     methods: {
         onSubmit(){
-            console.log(this.name + ' ' + this.passkey)
+            let userDetails = {
+                name: this.name,
+                passkey: this.passkey
+            }
+
+            console.log(JSON.stringify(userDetails))
+
+            axios
+                .post('/login',JSON.stringify(userDetails))
+                .then(function (response){
+                    console.log(response)
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
+
+            this.name = ''
+            this.passkey = ''   
         }
     }
 })
+

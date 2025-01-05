@@ -5,11 +5,14 @@
         <title>workout login</title>
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
 
     <body>
         <div id="app">
             <h1>{{message}}</h1>
+
+            <button @click="getAccounts">get accounts</button>
 
             <login-form></login-form>
         </div>
@@ -19,6 +22,7 @@
     <script src="./components/LoginForm.js"></script>
 
     <script>
+        axios.defaults.baseURL = 'http://localhost:8080';
         const mountedApp = app.mount('#app')
     </script>
 </html>
