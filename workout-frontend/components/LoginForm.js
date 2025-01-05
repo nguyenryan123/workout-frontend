@@ -24,15 +24,20 @@ app.component('login-form',{
                 passkey: this.passkey
             }
 
-            console.log(JSON.stringify(userDetails))
+            console.log(userDetails)
 
             axios
-                .post('/login',JSON.stringify(userDetails))
+                .post('/login',{},{
+                    params: {
+                        name: this.name,
+                        passkey: this.passkey
+                    }
+                })
                 .then(function (response){
                     console.log(response)
                 })
                 .catch(function(error){
-                    console.log(error)
+                    console.log(error.response)
                 })
 
             this.name = ''
