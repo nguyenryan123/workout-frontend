@@ -34,9 +34,10 @@ app.component('login-form',{
                     }
                 })
                 .then((response) => {
-                    this.$emit('update-message',response)
                     // console.log(response.data.id)
-                    // localStorage.setItem('userid',response.data.id)
+                    localStorage.setItem('userid',response.data.id)
+                    localStorage.setItem('name',response.data.name)
+                    this.$emit('update-message')
                     // console.log(localStorage.getItem('userid'))
                 })
                 .catch((error) => {

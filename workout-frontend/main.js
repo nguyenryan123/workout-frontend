@@ -15,10 +15,20 @@ const app = Vue.createApp({
         removeId(){
             localStorage.removeItem('userid')
         },
+        removeName(){
+            localStorage.removeItem('name')
+        },
         updateMessage(){
-            this.message = 'updated'
-            console.log('updated')
-            // this.message = localStorage.getItem('userid')
+            const name = localStorage.getItem('name')
+            const userid = localStorage.getItem('userid')
+            
+            if(name && userid){
+                this.message = 'hi ' + name + ' // id: ' + userid
+            }
+            else this.message = ''
         }
+    },
+    created(){
+        this.updateMessage()
     }
 })
