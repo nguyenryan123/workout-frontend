@@ -10,7 +10,7 @@ app.component('login-form',{
             <input class="button" type="submit" value="Submit">
         </form>
         
-        <p>{{errorMessage}}</p>
+        <p v-show="showError">{{errorMessage}}</p>
     </div>
     `,
 
@@ -18,7 +18,8 @@ app.component('login-form',{
         return{
             name: '',
             passkey: '',
-            errorMessage: ''
+            errorMessage: '',
+            showError: false
         }
     },
 
@@ -46,6 +47,11 @@ app.component('login-form',{
                 .catch((error) => {
                     console.log(error.response.data.errorMessage)
                     this.errorMessage = error.response.data.errorMessage
+                    this.showError = true
+                    
+                    setTimeout(()=>{
+                        this.showError = false
+                    },5000)
                 })
 
             this.name = ''

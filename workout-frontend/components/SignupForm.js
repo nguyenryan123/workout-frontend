@@ -18,7 +18,8 @@ app.component('signup-form',{
         return{
             name: '',
             passkey: '',
-            errorMessage: ''
+            errorMessage: '',
+            showError: false
         }
     },
 
@@ -43,6 +44,11 @@ app.component('signup-form',{
                 })
                 .catch((error) => {
                     this.errorMessage = error.response.data.errorMessage
+                    this.showError = true
+
+                    setTimeout(()=>{
+                        this.showError = false
+                    },5000)
                 })
 
             this.name = ''
