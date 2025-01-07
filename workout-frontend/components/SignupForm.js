@@ -10,7 +10,7 @@ app.component('signup-form',{
             <input class="button" type="submit" value="Submit">
         </form>
         
-        <p>{{errorMessage}}</p>
+        <p v-show="showError">{{errorMessage}}</p>
     </div>
     `,
 
@@ -40,7 +40,13 @@ app.component('signup-form',{
                     }
                 })
                 .then((response) => {
+                    //not an error
                     this.errorMessage = 'Signed up. You can now login to your account'
+                    this.showError = true
+
+                    setTimeout(()=>{
+                        this.showError = false
+                    },5000)
                 })
                 .catch((error) => {
                     this.errorMessage = error.response.data.errorMessage
