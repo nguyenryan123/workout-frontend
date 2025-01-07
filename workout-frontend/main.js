@@ -12,11 +12,10 @@ const app = Vue.createApp({
                     console.log(response)
                 })
         },
-        removeId(){
-            localStorage.removeItem('userid')
-        },
-        removeName(){
+        logout(){
             localStorage.removeItem('name')
+            localStorage.removeItem('userid')
+            this.updateMessage()
         },
         updateMessage(){
             const name = localStorage.getItem('name')
