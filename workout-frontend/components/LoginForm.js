@@ -2,18 +2,23 @@ app.component('login-form',{
     template:
     /*html*/
     `
-    <form class="login-form" @submit.prevent="onSubmit">
-        <h3>Login</h3>
-        <input id="name" v-model="name">
-        <input id="passkey" v-model="passkey" type="password">
-        <input class="button" type="submit" value="Submit">
-    </form>
+    <div>
+        <form class="login-form" @submit.prevent="onSubmit">
+            <h3>Login</h3>
+            <input id="name" v-model="name">
+            <input id="passkey" v-model="passkey" type="password">
+            <input class="button" type="submit" value="Submit">
+        </form>
+        
+        <p>{{errorMessage}}</p>
+    </div>
     `,
 
     data(){
         return{
-            name:'',
-            passkey:''
+            name: '',
+            passkey: '',
+            errorMessage: ''
         }
     },
 
@@ -39,11 +44,12 @@ app.component('login-form',{
                     this.$emit('update-message')
                 })
                 .catch((error) => {
-                    console.log(error.response)
+                    console.log(error.response.data.errorMessage)
+                    this.errorMessage = error.response.data.errorMessage
                 })
 
             this.name = ''
-            this.passkey = ''   
+            this.passkey = ''
         }
     }
 })

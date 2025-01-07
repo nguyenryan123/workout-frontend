@@ -16,11 +16,13 @@
             <button v-show="loggedIn" @click="logout">logout</button>
 
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
+            <signup-form v-show="!loggedIn"></signup-form>
         </div>
     </body>
 
     <script src="./main.js"></script>
     <script src="./components/LoginForm.js"></script>
+    <script src="./components/SignupForm.js"></script>
 
     <script>
         axios.defaults.baseURL = 'http://localhost:8080';
