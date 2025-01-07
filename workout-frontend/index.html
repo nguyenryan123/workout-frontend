@@ -10,11 +10,12 @@
 
     <body>
         <div id="app">
-            <h1>{{message}}</h1>
+            <h1>{{ message }}</h1>
 
             <button @click="getAccounts">get accounts</button>
+            <button @click="updateMessage">logout</button>
 
-            <login-form></login-form>
+            <login-form @update-message="updateMessage"></login-form>
         </div>
     </body>
 

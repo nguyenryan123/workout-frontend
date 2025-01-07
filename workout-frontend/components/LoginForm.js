@@ -33,10 +33,13 @@ app.component('login-form',{
                         passkey: this.passkey
                     }
                 })
-                .then(function (response){
-                    console.log(response)
+                .then((response) => {
+                    this.$emit('update-message',response)
+                    // console.log(response.data.id)
+                    // localStorage.setItem('userid',response.data.id)
+                    // console.log(localStorage.getItem('userid'))
                 })
-                .catch(function(error){
+                .catch((error) => {
                     console.log(error.response)
                 })
 
