@@ -20,8 +20,8 @@
 
             <div class="workoutList">
                 <ul>
-                    <li v-for="workout in workouts">
-                        <button>{{ workout.workoutName }}</button>
+                    <li v-for="workout in workouts" :key="workout.workoutId">
+                        <button @click="selectWorkout(workout.workoutId)">{{ workout.workoutName }}</button>
                     </li>
                 </ul>
             </div>
@@ -33,8 +33,8 @@
                             Workout Name: {{ workoutDetail.workout_name}}
                         </div>
                         <ul>
-                            <li v-for="(set, index) in workoutDetail.sets">
-                                <button>weight: {{ set.weight }} reps: {{ set.reps }}</button>
+                            <li v-for="set in workoutDetail.sets">
+                                <button @click="selectSet(set.setId)">weight: {{ set.weight }} reps: {{ set.reps }}</button>
                             </li>
                         </ul>
                     </li>

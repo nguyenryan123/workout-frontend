@@ -61,6 +61,7 @@ const app = Vue.createApp({
                     }
                 })
                 .then((response) => {
+                    console.log(response.data)
                     this.workouts = response.data
                 })
                 .catch((error) => {
@@ -82,6 +83,12 @@ const app = Vue.createApp({
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+        selectWorkout(workoutId){
+            console.log(workoutId)
+        },
+        selectSet(setId){
+            console.log(setId)
         }
     },
     created(){
