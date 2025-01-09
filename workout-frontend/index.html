@@ -28,8 +28,10 @@
 
             <div class="setList">
                 <ul>
-                    <li>
-                        Workout Name
+                    <li v-for="workout in workouts" :key="workout.workoutId">
+                        <div>
+                            Workout Name: {{ workout.workoutName}}
+                        </div>
                         <ul>
                             <li><button>weight: 135 reps: 12</button></li>
                             <li><button>weight: 135 reps: 12</button></li>

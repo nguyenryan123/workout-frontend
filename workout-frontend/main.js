@@ -3,7 +3,8 @@ const app = Vue.createApp({
         return{
             message: '',
             loggedIn: false,
-            workouts: []
+            workouts: [],
+            sets: []
 
         }
     },
@@ -27,6 +28,9 @@ const app = Vue.createApp({
             
             if(name && userid){
                 this.message = 'hi ' + name + ' // id: ' + userid
+                
+                //temporary way to update workouts on login
+                this.getWorkouts()
             }
             else this.message = ''
             
@@ -38,12 +42,16 @@ const app = Vue.createApp({
             if(name && userid){
                 this.loggedIn = true
             }
-            else this.loggedIn = false
+            else{
+                this.loggedIn = false
+
+                //clear workouts array
+                this.workouts.length = 0
+            }
 
             console.log(this.loggedIn)
         },
         getWorkouts(){
-            console.log('userid: ' + localStorage.getItem('userid'))
             axios
                 .get("/workouts",{
                     params: {
@@ -52,7 +60,21 @@ const app = Vue.createApp({
                 })
                 .then((response) => {
                     this.workouts = response.data
-                    console.log(this.workouts[0].workoutName)
+                    // console.log(this.workouts[0].workoutName)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+        getSets(workout_id){
+            axios
+                .get("/sets",{
+                    params: {
+                        workoutId: workout_id
+                    }
+                })
+                .then((response) => {
+                    console.log(response)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -61,6 +83,7 @@ const app = Vue.createApp({
     },
     created(){
         this.updateMessage()
-        this.getWorkouts()
+        // this.getWorkouts()
+        // this.getSets(1)
     }
 })
