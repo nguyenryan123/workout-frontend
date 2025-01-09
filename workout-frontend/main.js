@@ -97,15 +97,35 @@ const app = Vue.createApp({
             console.log(setId)
         },
         setDate(){
-            console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
+            // console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
             this.date = this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day
             this.getWorkoutDetails()
+        },
+        addWorkout(){
+            let workout_name = prompt("Enter name of workout")
+            if(workout_name === null){
+                console.log("empty prompt")
+            }
+            else{
+                axios
+                    .post("/workouts",{},{
+                        params: {
+                            workoutName: workout_name,
+                            userId: localStorage.getItem('userid')
+                        }
+                    })
+                    .then((response) => {
+                        console.log(response)
+                        this.getWorkouts()
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
         }
     },
     created(){
         this.updateMessage()
         this.getWorkouts()
-        // this.getWorkoutDetails()
-        // this.getSets(1)
     }
 })

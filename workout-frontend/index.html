@@ -18,39 +18,44 @@
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
             <signup-form v-show="!loggedIn"></signup-form>
 
-            <div>
-                <p>date: {{ date }}</p>
-                <form class="date-select" @submit.prevent="setDate">
-                    <input id="year" v-model="this.formDate.year">
-                    <input id="month" v-model="this.formDate.month">
-                    <input id="day" v-model="this.formDate.day">
-                    <input class="button" type="submit" value="Submit">
-                </form>
-            </div>
+            <div v-show="loggedIn">
+                <div>
+                    <p>date: {{ date }}</p>
+                    <form class="date-select" @submit.prevent="setDate">
+                        <input id="year" v-model="this.formDate.year">
+                        <input id="month" v-model="this.formDate.month" maxlength="2">
+                        <input id="day" v-model="this.formDate.day" maxlength="2">
+                        <input class="button" type="submit" value="Submit">
+                    </form>
+                </div>
+    
+                <div class="workoutList">
+                    <ul>
+                        <li v-for="workout in workouts" :key="workout.workoutId">
+                            <button @click="selectWorkout(workout.workoutId)">{{ workout.workoutName }}</button>
+                        </li>
+                    </ul>
 
-            <div class="workoutList">
-                <ul>
-                    <li v-for="workout in workouts" :key="workout.workoutId">
-                        <button @click="selectWorkout(workout.workoutId)">{{ workout.workoutName }}</button>
-                    </li>
-                </ul>
+                    <button @click="addWorkout">add workout</button>
+                </div>
+    
+                <div class="setList">
+                    <ul>
+                        <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId">
+                            <div>
+                                Workout Name: {{ workoutDetail.workout_name}}
+                            </div>
+                            <ul>
+                                <li v-for="set in workoutDetail.sets">
+                                    <button @click="selectSet(set.setId)">weight: {{ set.weight }} reps: {{ set.reps }}</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+    
             </div>
-
-            <div class="setList">
-                <ul>
-                    <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId">
-                        <div>
-                            Workout Name: {{ workoutDetail.workout_name}}
-                        </div>
-                        <ul>
-                            <li v-for="set in workoutDetail.sets">
-                                <button @click="selectSet(set.setId)">weight: {{ set.weight }} reps: {{ set.reps }}</button>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-
+            
         </div>
     </body>
 
