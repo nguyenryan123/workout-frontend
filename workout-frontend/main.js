@@ -5,7 +5,12 @@ const app = Vue.createApp({
             loggedIn: false,
             workouts: [],
             workoutDetails: [],
-            date: '2025-01-07'
+            date: '',
+            formDate: {
+                year: '',
+                month: '',
+                day: ''
+            }
 
         }
     },
@@ -92,13 +97,15 @@ const app = Vue.createApp({
             console.log(setId)
         },
         setDate(){
-            console.log('test')
+            console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
+            this.date = this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day
+            this.getWorkoutDetails()
         }
     },
     created(){
         this.updateMessage()
         this.getWorkouts()
-        this.getWorkoutDetails()
+        // this.getWorkoutDetails()
         // this.getSets(1)
     }
 })

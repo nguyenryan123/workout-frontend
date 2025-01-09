@@ -21,9 +21,9 @@
             <div>
                 <p>date: {{ date }}</p>
                 <form class="date-select" @submit.prevent="setDate">
-                    <input id="year">
-                    <input id="month">
-                    <input id="day">
+                    <input id="year" v-model="this.formDate.year">
+                    <input id="month" v-model="this.formDate.month">
+                    <input id="day" v-model="this.formDate.day">
                     <input class="button" type="submit" value="Submit">
                 </form>
             </div>
