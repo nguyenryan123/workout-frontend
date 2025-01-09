@@ -2,7 +2,9 @@ const app = Vue.createApp({
     data(){
         return{
             message: '',
-            loggedIn: false
+            loggedIn: false,
+            workouts: []
+
         }
     },
     methods:{
@@ -39,9 +41,26 @@ const app = Vue.createApp({
             else this.loggedIn = false
 
             console.log(this.loggedIn)
+        },
+        getWorkouts(){
+            console.log('userid: ' + localStorage.getItem('userid'))
+            axios
+                .get("/workouts",{
+                    params: {
+                        userId: localStorage.getItem('userid')
+                    }
+                })
+                .then((response) => {
+                    this.workouts = response.data
+                    console.log(this.workouts[0].workoutName)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
     },
     created(){
         this.updateMessage()
+        this.getWorkouts()
     }
 })

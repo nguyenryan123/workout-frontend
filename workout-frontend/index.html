@@ -17,6 +17,27 @@
 
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
             <signup-form v-show="!loggedIn"></signup-form>
+
+            <div class="workoutList">
+                <ul>
+                    <li v-for="workout in workouts">
+                        <button>{{ workout.workoutName }}</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="setList">
+                <ul>
+                    <li>
+                        Workout Name
+                        <ul>
+                            <li><button>weight: 135 reps: 12</button></li>
+                            <li><button>weight: 135 reps: 12</button></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </body>
 
