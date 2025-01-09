@@ -4,7 +4,7 @@ const app = Vue.createApp({
             message: '',
             loggedIn: false,
             workouts: [],
-            sets: []
+            workoutDetails: []
 
         }
     },
@@ -31,6 +31,7 @@ const app = Vue.createApp({
                 
                 //temporary way to update workouts on login
                 this.getWorkouts()
+                this.getWorkoutDetails()
             }
             else this.message = ''
             
@@ -47,6 +48,7 @@ const app = Vue.createApp({
 
                 //clear workouts array
                 this.workouts.length = 0
+                this.workoutDetails.length = 0
             }
 
             console.log(this.loggedIn)
@@ -60,21 +62,22 @@ const app = Vue.createApp({
                 })
                 .then((response) => {
                     this.workouts = response.data
-                    // console.log(this.workouts[0].workoutName)
                 })
                 .catch((error) => {
                     console.log(error)
                 })
         },
-        getSets(workout_id){
+        getWorkoutDetails(){
             axios
-                .get("/sets",{
+                .get("/allWorkoutDetails",{
                     params: {
-                        workoutId: workout_id
+                        userId: localStorage.getItem('userid'),
+                        date: '2025-01-07'
                     }
                 })
                 .then((response) => {
                     console.log(response)
+                    this.workoutDetails = response.data
                 })
                 .catch((error) => {
                     console.log(error)
@@ -83,7 +86,8 @@ const app = Vue.createApp({
     },
     created(){
         this.updateMessage()
-        // this.getWorkouts()
+        this.getWorkouts()
+        this.getWorkoutDetails()
         // this.getSets(1)
     }
 })

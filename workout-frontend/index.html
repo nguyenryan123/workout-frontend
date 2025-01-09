@@ -28,13 +28,14 @@
 
             <div class="setList">
                 <ul>
-                    <li v-for="workout in workouts" :key="workout.workoutId">
+                    <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId">
                         <div>
-                            Workout Name: {{ workout.workoutName}}
+                            Workout Name: {{ workoutDetail.workout_name}}
                         </div>
                         <ul>
-                            <li><button>weight: 135 reps: 12</button></li>
-                            <li><button>weight: 135 reps: 12</button></li>
+                            <li v-for="(set, index) in workoutDetail.sets">
+                                <button>weight: {{ set.weight }} reps: {{ set.reps }}</button>
+                            </li>
                         </ul>
                     </li>
                 </ul>
