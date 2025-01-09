@@ -10,7 +10,8 @@ const app = Vue.createApp({
                 year: '',
                 month: '',
                 day: ''
-            }
+            },
+            selectedWorkout: null
 
         }
     },
@@ -91,7 +92,9 @@ const app = Vue.createApp({
                 })
         },
         selectWorkout(workoutId){
-            console.log(workoutId)
+            // console.log(workoutId)
+            this.selectedWorkout = workoutId
+            console.log(this.selectedWorkout)
         },
         selectSet(setId){
             console.log(setId)
@@ -117,6 +120,31 @@ const app = Vue.createApp({
                     .then((response) => {
                         console.log(response)
                         this.getWorkouts()
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
+        },
+        addSet(){
+            let _weight = prompt('weight')
+            let _reps = prompt('reps')
+            if(_weight === null || _reps === null){
+                console.log("empty input")
+            }
+            else{
+                axios
+                    .post("/sets",{},{
+                        params: {
+                            weight: _weight,
+                            reps: _reps,
+                            workoutId: this.selectedWorkout,
+                            workoutDate: this.date
+                        }
+                    })
+                    .then((response) => {
+                        console.log(response)
+                        this.getWorkoutDetails()
                     })
                     .catch((error) => {
                         console.log(error)
