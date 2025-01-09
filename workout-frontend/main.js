@@ -4,7 +4,8 @@ const app = Vue.createApp({
             message: '',
             loggedIn: false,
             workouts: [],
-            workoutDetails: []
+            workoutDetails: [],
+            date: '2025-01-07'
 
         }
     },
@@ -73,7 +74,7 @@ const app = Vue.createApp({
                 .get("/allWorkoutDetails",{
                     params: {
                         userId: localStorage.getItem('userid'),
-                        date: '2025-01-07'
+                        date: this.date
                     }
                 })
                 .then((response) => {
@@ -89,6 +90,9 @@ const app = Vue.createApp({
         },
         selectSet(setId){
             console.log(setId)
+        },
+        setDate(){
+            console.log('test')
         }
     },
     created(){
