@@ -19,7 +19,7 @@
             <signup-form v-show="!loggedIn"></signup-form>
 
             <div v-show="loggedIn">
-                <div>
+                <div class="selectDate">
                     <p>date: {{ date }}</p>
                     <form class="date-select" @submit.prevent="setDate">
                         <input id="year" v-model="this.formDate.year">
