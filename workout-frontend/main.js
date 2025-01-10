@@ -11,7 +11,8 @@ const app = Vue.createApp({
                 month: '',
                 day: ''
             },
-            selectedWorkout: null
+            selectedWorkout: null,
+            selectedSet: null
 
         }
     },
@@ -97,7 +98,8 @@ const app = Vue.createApp({
             console.log(this.selectedWorkout)
         },
         selectSet(setId){
-            console.log(setId)
+            this.selectedSet = setId
+            console.log(this.selectedSet)
         },
         setDate(){
             // console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
@@ -150,6 +152,22 @@ const app = Vue.createApp({
                         console.log(error)
                     })
             }
+        },
+        deleteWorkout(){
+            axios
+                .post("/deleteWorkout",{},{
+                    params: {
+                        workoutId: this.selectedWorkout
+                    }
+                })
+                .then((response) => {
+                    console.log(response)
+                    this.getWorkouts()
+                    this.getWorkoutDetails()
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
     },
     created(){
