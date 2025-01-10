@@ -180,6 +180,49 @@ const app = Vue.createApp({
                     console.log(response)
                     this.getWorkoutDetails()
                 })
+        },
+        editWorkout(){
+            let _workoutName = prompt("change workout name to:")
+            if(_workoutName === null){
+                console.log("empty")
+            }
+            else{
+                axios
+                    .post("/editWorkout",{},{
+                        params: {
+                            workoutName: _workoutName,
+                            workoutId: this.selectedWorkout
+                        }
+                    })
+                    .then((response) => {
+                        this.getWorkouts()
+                        this.getWorkoutDetails()
+                        console.log(response)
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
+        },
+        editSet(){
+            let _weight = prompt("change weight to:","-1")
+            let _reps = prompt("change reps to:","-1")
+            
+            axios
+                .post("/editSet",{},{
+                    params: {
+                        weight: _weight,
+                        reps: _reps,
+                        setId: this.selectedSet
+                    }
+                })
+                .then((response) => {
+                    this.getWorkoutDetails()
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
     },
     created(){
