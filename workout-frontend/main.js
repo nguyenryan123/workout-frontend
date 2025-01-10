@@ -168,6 +168,18 @@ const app = Vue.createApp({
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+        deleteSet(){
+            axios
+                .post("/deleteSet",{},{
+                    params: {
+                        setId: this.selectedSet
+                    }
+                })
+                .then((response) => {
+                    console.log(response)
+                    this.getWorkoutDetails()
+                })
         }
     },
     created(){
