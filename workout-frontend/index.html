@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="calendar_wrapper">
-                    <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)">
+                    <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)" :style="{color: calendar.daysContainingWorkout.includes(calendarDay) ? 'white' : 'black'}">
                         {{ calendarDay }}
                     </div>
                 </div>

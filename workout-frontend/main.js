@@ -19,7 +19,8 @@ const app = Vue.createApp({
                 year: new Date().getFullYear(),
                 months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
                 monthDisplayed: '',
-                yearOptions: []
+                yearOptions: [],
+                daysContainingWorkout: []
             },
             showDropdown: false,
             showCalendar: false
@@ -246,14 +247,13 @@ const app = Vue.createApp({
             
             this.calendar.yearOptions.length = 0
 
-            console.log(2012 < currentYear)
+            // console.log(2012 < currentYear)
             
             for(let i = 2012; i < currentYear + 3; i++){
-                console.log(i)
                 this.calendar.yearOptions.push(i)
             }
             
-            console.log(this.calendar.yearOptions)
+            // console.log(this.calendar.yearOptions)
 
             for(let i = 0; i < dateObj.getDay(); i++){
                 this.calendar.calendarDays.push(null)
@@ -309,6 +309,32 @@ const app = Vue.createApp({
         },
         toggleCalendar(){
             this.showCalendar = !this.showCalendar
+            this.fillDaysContainingWorkout()
+        },
+        fillDaysContainingWorkout(){
+            this.calendar.daysContainingWorkout.length = 0
+
+            let year = this.calendar.year
+            let month = this.calendar.month + 1
+
+            if(month < 10){
+                month = '0' + month
+            }
+
+            axios
+                .get("/checkDay",{
+                    params: {
+                        userId: localStorage.getItem('userid'),
+                        date: year + '-' + month + '-' + '01'
+                    }
+                })
+                .then((response) => {
+                    this.calendar.daysContainingWorkout = response.data
+                    console.log(response.data)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         }
     },
     created(){
