@@ -20,7 +20,7 @@
             <signup-form v-show="!loggedIn"></signup-form>
             
 
-            <div class="calendar">
+            <div class="calendar" v-show="showCalendar">
                 <div class="calendar_header">
                     <div>
                         <h2 class="month_displayed" @click="toggleDropdown">{{ calendar.monthDisplayed }}</h2>

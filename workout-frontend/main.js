@@ -21,7 +21,8 @@ const app = Vue.createApp({
                 monthDisplayed: '',
                 yearOptions: []
             },
-            showDropdown: false
+            showDropdown: false,
+            showCalendar: true
             
 
         }
@@ -279,6 +280,7 @@ const app = Vue.createApp({
                 _day = '0' + _day
             }
             console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
+            this.toggleCalendar()
         },
         incrementMonth(step){
             this.calendar.month += step
@@ -299,6 +301,9 @@ const app = Vue.createApp({
         },
         toggleDropdown(){
             this.showDropdown = !this.showDropdown
+        },
+        toggleCalendar(){
+            this.showCalendar = !this.showCalendar
         }
     },
     created(){
