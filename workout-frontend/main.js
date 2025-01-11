@@ -298,11 +298,13 @@ const app = Vue.createApp({
             }
             this.calendar.calendarDays.length = 0
             this.fillCalendarDays(this.calendar.year, this.calendar.month)
+            this.fillDaysContainingWorkout()
         },
         selectYear(year){
             this.calendar.year = year
             this.showDropdown = false
             this.fillCalendarDays(this.calendar.year,this.calendar.month)
+            this.fillDaysContainingWorkout()
         },
         toggleDropdown(){
             this.showDropdown = !this.showDropdown
