@@ -1,4 +1,4 @@
-.wrapper {
+.calendar_wrapper {
     display: grid;
     grid-template-columns: repeat(7, 5fr);
     column-gap: 0px;
@@ -11,7 +11,7 @@
     background-color: #fff4e6; */
   }
   
-  .wrapper > div {
+  .calendar_wrapper > div {
     border: 2px solid #ffa6a6;
     aspect-ratio: 1/1;
     border-radius: 1px;
@@ -20,4 +20,28 @@
     color: #a43737;
     font: 1em "Fira Sans", sans-serif;
   }
+
+  .calendar_header {
+    padding: 10px;
+    padding-bottom: 55px;
+    width: 382px;
+    height: 50px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #ca4f4f;
+    /* overflow: hidden; */
+  }
   
+  .calendar {
+    position: relative;
+    left: 50px;
+    top: 30px;
+  }
+
+  .month_displayed {
+    font: 1.3em "Fira Sans", sans-serif;
+    text-align: center;
+    color: white;
+    position: relative;
+    line-height: 9px;
+  }

@@ -18,12 +18,22 @@
 
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
             <signup-form v-show="!loggedIn"></signup-form>
+            
 
-            <div class="wrapper">
-                <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)">
-                    {{ calendarDay }}
+            <div class="calendar">
+                <div class="calendar_header">
+                    <h2 class="month_displayed">January</h2>
+                </div>
+
+                <div class="calendar_wrapper">
+                    <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)">
+                        {{ calendarDay }}
+                    </div>
                 </div>
             </div>
+            
+
+            
 
             <div v-show="loggedIn">
                 <div class="selectDate">
