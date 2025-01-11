@@ -60,3 +60,19 @@
     left: 333px;
     bottom: 20px;
   }
+
+
+  .dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    width: 15%;
+    position: relative;
+    left: 44%;
+  }
+
+  .options {
+    text-align: center;
+    padding-bottom: 25%;
+    border: 2px solid black;
+  }

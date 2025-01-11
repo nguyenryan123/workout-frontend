@@ -22,7 +22,16 @@
 
             <div class="calendar">
                 <div class="calendar_header">
-                    <h2 class="month_displayed">{{ calendar.monthDisplayed }}</h2>
+                    <div>
+                        <h2 class="month_displayed">{{ calendar.monthDisplayed }}</h2>
+                        <div class="dropdown">
+                            <div v-for="year in calendar.yearOptions" class="options">
+                                <div>{{ year }}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
                     <button class="button_left" @click="incrementMonth(-1)">left</button>
                     <button class="button_right" @click="incrementMonth(1)">right</button>
                 </div>

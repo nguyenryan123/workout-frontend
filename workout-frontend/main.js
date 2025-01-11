@@ -18,7 +18,8 @@ const app = Vue.createApp({
                 month: new Date().getMonth(),
                 year: new Date().getFullYear(),
                 months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
-                monthDisplayed: ''
+                monthDisplayed: '',
+                yearOptions: []
             }
             
 
@@ -67,7 +68,7 @@ const app = Vue.createApp({
                 this.workoutDetails.length = 0
             }
 
-            console.log(this.loggedIn)
+            // console.log(this.loggedIn)
         },
         getWorkouts(){
             axios
@@ -236,6 +237,20 @@ const app = Vue.createApp({
             let dateObj = new Date(year, month, 1)
             let lastDay = new Date(year, month + 1, 0)
             let totalGrid = 35
+            
+            let now = new Date()
+            let currentYear = now.getFullYear()
+            
+            this.calendar.yearOptions.length = 0
+
+            console.log(2012 < currentYear)
+            
+            for(let i = 2012; i < currentYear + 3; i++){
+                console.log(i)
+                this.calendar.yearOptions.push(i)
+            }
+            
+            console.log(this.calendar.yearOptions)
 
             for(let i = 0; i < dateObj.getDay(); i++){
                 this.calendar.calendarDays.push(null)
