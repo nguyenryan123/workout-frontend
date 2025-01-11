@@ -1,0 +1,22 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 5fr);
+    column-gap: 0px;
+    row-gap: 0em;
+    width: 100px;
+    height: 100px;
+
+    /* border: 2px solid #f76707;
+    border-radius: 1px;
+    background-color: #fff4e6; */
+  }
+  
+  .wrapper > div {
+    border: 2px solid #000000;
+    aspect-ratio: 1/1;
+    border-radius: 1px;
+    background-color: #a88383;
+    padding: 1em;
+    color: #000000;
+  }
+  

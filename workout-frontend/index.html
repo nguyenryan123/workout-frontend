@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>workout login</title>
+        <link rel="stylesheet" href="styles.css">
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -17,6 +18,10 @@
 
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
             <signup-form v-show="!loggedIn"></signup-form>
+
+            <div class="wrapper">
+                
+            </div>
 
             <div v-show="loggedIn">
                 <div class="selectDate">
