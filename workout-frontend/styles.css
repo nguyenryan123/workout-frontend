@@ -36,6 +36,9 @@
     position: relative;
     left: 50px;
     top: 30px;
+
+    /* left: 50%;
+    top: 50%; */
   }
 
   .month_displayed {
@@ -44,4 +47,16 @@
     color: white;
     position: relative;
     line-height: 9px;
+  }
+
+  .button_left {
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+  }
+  
+  .button_right {
+    position: absolute;
+    left: 333px;
+    bottom: 20px;
   }

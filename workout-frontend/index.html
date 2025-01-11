@@ -22,7 +22,9 @@
 
             <div class="calendar">
                 <div class="calendar_header">
-                    <h2 class="month_displayed">January</h2>
+                    <h2 class="month_displayed">{{ calendar.monthDisplayed }}</h2>
+                    <button class="button_left" @click="incrementMonth(-1)">left</button>
+                    <button class="button_right" @click="incrementMonth(1)">right</button>
                 </div>
 
                 <div class="calendar_wrapper">

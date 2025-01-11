@@ -16,7 +16,9 @@ const app = Vue.createApp({
             calendar: {
                 calendarDays: [],
                 month: new Date().getMonth(),
-                year: new Date().getFullYear()
+                year: new Date().getFullYear(),
+                months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+                monthDisplayed: ''
             }
             
 
@@ -233,8 +235,7 @@ const app = Vue.createApp({
         fillCalendarDays(year, month){
             let dateObj = new Date(year, month, 1)
             let lastDay = new Date(year, month + 1, 0)
-            console.log('dayIndex: ' + dateObj.getDay())
-            console.log('lastDay: ' + lastDay.getDate())
+            let totalGrid = 35
 
             for(let i = 0; i < dateObj.getDay(); i++){
                 this.calendar.calendarDays.push(null)
@@ -244,18 +245,34 @@ const app = Vue.createApp({
                 this.calendar.calendarDays.push(i)
             }
             
-            for(let i = this.calendar.calendarDays.length; i < 35; i++){
+            if((dateObj.getDay() + lastDay.getDate()) > 35){
+                totalGrid = 42
+            }
+
+            for(let i = this.calendar.calendarDays.length; i < totalGrid; i++){
                 this.calendar.calendarDays.push(null)
             }
+
+            this.calendar.monthDisplayed = this.calendar.months[this.calendar.month] + ' ' + this.calendar.year
         },
         selectDay(day){
-            
             let _day = day
             if(day === null) return
             if(_day < 10){
                 _day = '0' + _day
             }
             console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
+        },
+        incrementMonth(step){
+            this.calendar.month += step
+            if(this.calendar.month > 11){
+                this.calendar.month = 0
+            }
+            if(this.calendar.month < 0){
+                this.calendar.month = 11
+            }
+            this.calendar.calendarDays.length = 0
+            this.fillCalendarDays(this.calendar.year, this.calendar.month)
         }
     },
     created(){
