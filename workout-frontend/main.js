@@ -13,7 +13,12 @@ const app = Vue.createApp({
             },
             selectedWorkout: null,
             selectedSet: null,
-            calendarDays: []
+            calendar: {
+                calendarDays: [],
+                month: new Date().getMonth(),
+                year: new Date().getFullYear()
+            }
+            
 
         }
     },
@@ -232,25 +237,30 @@ const app = Vue.createApp({
             console.log('lastDay: ' + lastDay.getDate())
 
             for(let i = 0; i < dateObj.getDay(); i++){
-                this.calendarDays.push(null)
+                this.calendar.calendarDays.push(null)
             }
 
             for(let i = 1; i < lastDay.getDate() + 1; i++){
-                this.calendarDays.push(i)
+                this.calendar.calendarDays.push(i)
             }
             
-            for(let i = this.calendarDays.length; i < 35; i++){
-                this.calendarDays.push(null)
+            for(let i = this.calendar.calendarDays.length; i < 35; i++){
+                this.calendar.calendarDays.push(null)
             }
-
-            console.log(this.calendarDays.length)
-
-            console.log(this.calendarDays)
+        },
+        selectDay(day){
+            
+            let _day = day
+            if(day === null) return
+            if(_day < 10){
+                _day = '0' + _day
+            }
+            console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
         }
     },
     created(){
         this.updateMessage()
         this.getWorkouts()
-        this.fillCalendarDays(2025,1)
+        this.fillCalendarDays(this.calendar.year,this.calendar.month)
     }
 })

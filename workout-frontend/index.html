@@ -20,7 +20,7 @@
             <signup-form v-show="!loggedIn"></signup-form>
 
             <div class="wrapper">
-                <div v-for="calendarDay in calendarDays">
+                <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)">
                     {{ calendarDay }}
                 </div>
             </div>
