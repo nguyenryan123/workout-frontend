@@ -23,9 +23,9 @@
             <div class="calendar">
                 <div class="calendar_header">
                     <div>
-                        <h2 class="month_displayed">{{ calendar.monthDisplayed }}</h2>
-                        <div class="dropdown">
-                            <div v-for="year in calendar.yearOptions" class="options">
+                        <h2 class="month_displayed" @click="toggleDropdown">{{ calendar.monthDisplayed }}</h2>
+                        <div class="dropdown" v-show="showDropdown">
+                            <div v-for="year in calendar.yearOptions" class="options" @click="selectYear(year)">
                                 <div>{{ year }}</div>
                             </div>
                         </div>

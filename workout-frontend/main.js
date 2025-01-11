@@ -20,7 +20,8 @@ const app = Vue.createApp({
                 months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
                 monthDisplayed: '',
                 yearOptions: []
-            }
+            },
+            showDropdown: false
             
 
         }
@@ -234,6 +235,7 @@ const app = Vue.createApp({
                 })
         },
         fillCalendarDays(year, month){
+            this.calendar.calendarDays.length = 0
             let dateObj = new Date(year, month, 1)
             let lastDay = new Date(year, month + 1, 0)
             let totalGrid = 35
@@ -288,6 +290,15 @@ const app = Vue.createApp({
             }
             this.calendar.calendarDays.length = 0
             this.fillCalendarDays(this.calendar.year, this.calendar.month)
+        },
+        selectYear(year){
+            // console.log(year)
+            this.calendar.year = year
+            this.showDropdown = false
+            this.fillCalendarDays(this.calendar.year,this.calendar.month)
+        },
+        toggleDropdown(){
+            this.showDropdown = !this.showDropdown
         }
     },
     created(){
