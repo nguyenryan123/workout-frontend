@@ -47,15 +47,16 @@
             
 
             <div v-show="loggedIn">
-                <div class="selectDate">
-                    <p>date: {{ date }}</p>
+                <p @click="toggleCalendar">date: {{ date }}</p>
+                <!-- <div class="selectDate">
+                    <p @click="toggleCalendar">date: {{ date }}</p>
                     <form class="date-select" @submit.prevent="setDate">
                         <input id="year" v-model="this.formDate.year">
                         <input id="month" v-model="this.formDate.month" maxlength="2">
                         <input id="day" v-model="this.formDate.day" maxlength="2">
                         <input class="button" type="submit" value="Submit">
                     </form>
-                </div>
+                </div> -->
     
                 <div class="workoutList">
                     <ul>

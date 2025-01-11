@@ -6,11 +6,11 @@ const app = Vue.createApp({
             workouts: [],
             workoutDetails: [],
             date: '',
-            formDate: {
-                year: '',
-                month: '',
-                day: ''
-            },
+            // formDate: {
+            //     year: '',
+            //     month: '',
+            //     day: ''
+            // },
             selectedWorkout: null,
             selectedSet: null,
             calendar: {
@@ -22,7 +22,7 @@ const app = Vue.createApp({
                 yearOptions: []
             },
             showDropdown: false,
-            showCalendar: true
+            showCalendar: false
             
 
         }
@@ -112,11 +112,11 @@ const app = Vue.createApp({
             this.selectedSet = setId
             console.log(this.selectedSet)
         },
-        setDate(){
-            // console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
-            this.date = this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day
-            this.getWorkoutDetails()
-        },
+        // setDate(){
+        //     // console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
+        //     this.date = this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day
+        //     this.getWorkoutDetails()
+        // },
         addWorkout(){
             let workout_name = prompt("Enter name of workout")
             if(workout_name === null){
@@ -279,8 +279,14 @@ const app = Vue.createApp({
             if(_day < 10){
                 _day = '0' + _day
             }
-            console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
-            this.toggleCalendar()
+            // console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
+            let _month = this.calendar.month + 1
+            if(_month < 10){
+                _month = '0' + _month
+            }
+            this.date = (this.calendar.year + '-' + _month + '-' + _day)
+            this.showCalendar = false
+            this.getWorkoutDetails()
         },
         incrementMonth(step){
             this.calendar.month += step
@@ -294,7 +300,6 @@ const app = Vue.createApp({
             this.fillCalendarDays(this.calendar.year, this.calendar.month)
         },
         selectYear(year){
-            // console.log(year)
             this.calendar.year = year
             this.showDropdown = false
             this.fillCalendarDays(this.calendar.year,this.calendar.month)
@@ -310,5 +315,6 @@ const app = Vue.createApp({
         this.updateMessage()
         this.getWorkouts()
         this.fillCalendarDays(this.calendar.year,this.calendar.month)
+        this.selectDay(new Date().getDate())
     }
 })
