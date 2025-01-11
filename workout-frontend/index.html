@@ -20,7 +20,9 @@
             <signup-form v-show="!loggedIn"></signup-form>
 
             <div class="wrapper">
-                
+                <div v-for="calendarDay in calendarDays">
+                    {{ calendarDay }}
+                </div>
             </div>
 
             <div v-show="loggedIn">

@@ -235,8 +235,12 @@ const app = Vue.createApp({
                 this.calendarDays.push(null)
             }
 
-            for(let i = 1; i < lastDay.getDate(); i++){
+            for(let i = 1; i < lastDay.getDate() + 1; i++){
                 this.calendarDays.push(i)
+            }
+            
+            for(let i = this.calendarDays.length; i < 35; i++){
+                this.calendarDays.push(null)
             }
 
             console.log(this.calendarDays.length)
@@ -247,6 +251,6 @@ const app = Vue.createApp({
     created(){
         this.updateMessage()
         this.getWorkouts()
-        this.fillCalendarDays(2025,0)
+        this.fillCalendarDays(2025,1)
     }
 })
