@@ -266,6 +266,11 @@
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
       font: 1.7em "Fira Sans", sans-serif;
+
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      width: 100%;
+      box-sizing: border-box;
   }
 
   ul {
