@@ -25,7 +25,7 @@
                     <div>
                         <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>
                         <div class="dropdown" v-show="showDropdown">
-                            <div v-for="year in calendar.yearOptions" class="options" @click="selectYear(year)">
+                            <div v-for="(year, index) in calendar.yearOptions" class="options" @click="selectYear(year)" @mouseover="setDropdownHovered(index, true)" @mouseleave="setDropdownHovered(index, false)" :class="{'hovered': dropdownHovered[index]}">
                                 <div>{{ year }}</div>
                             </div>
                         </div>
@@ -44,20 +44,11 @@
             </div>
             
 
-            
+
+
 
             <div v-show="loggedIn">
                 <p @click="toggleCalendar">date: {{ date }}</p>
-                <!-- <div class="selectDate">
-                    <p @click="toggleCalendar">date: {{ date }}</p>
-                    <form class="date-select" @submit.prevent="setDate">
-                        <input id="year" v-model="this.formDate.year">
-                        <input id="month" v-model="this.formDate.month" maxlength="2">
-                        <input id="day" v-model="this.formDate.day" maxlength="2">
-                        <input class="button" type="submit" value="Submit">
-                    </form>
-                </div> -->
-    
                 <div class="workoutList">
                     <ul>
                         <li v-for="workout in workouts" :key="workout.workoutId">
