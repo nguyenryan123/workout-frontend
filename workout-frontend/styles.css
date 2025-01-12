@@ -63,6 +63,7 @@ body {
 
   .month_displayed.hovered {
     font-weight: 750;
+    color: rgb(126, 126, 206)
   }
 
   .button_left {
@@ -235,7 +236,7 @@ body {
     padding: 10px;
     margin: 0 auto;
     border-radius: 10px;
-    margin-top: 50px;
+    margin-top: 75px;
     border: 1px solid black;
   }
 
