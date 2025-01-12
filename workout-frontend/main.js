@@ -22,7 +22,7 @@ const app = Vue.createApp({
             isHovered: false,
             daysHovered: [],
             dropdownHovered: [],
-            currentView: 'loginScreen'
+            currentView: ''
             
 
         }
@@ -40,6 +40,7 @@ const app = Vue.createApp({
             localStorage.removeItem('userid')
             this.updateMessage()
             this.updateLoggedIn()
+            this.changeView('loginScreen')
         },
         updateMessage(){
             const name = localStorage.getItem('name')
@@ -61,9 +62,11 @@ const app = Vue.createApp({
             const userid = localStorage.getItem('userid')
             if(name && userid){
                 this.loggedIn = true
+                this.changeView('home')
             }
             else{
                 this.loggedIn = false
+                this.changeView('loginScreen')
 
                 //clear workouts array
                 this.workouts.length = 0
