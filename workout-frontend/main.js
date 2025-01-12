@@ -20,7 +20,8 @@ const app = Vue.createApp({
             showDropdown: false,
             showCalendar: false,
             isHovered: false,
-            daysHovered: []
+            daysHovered: [],
+            dropdownHovered: []
             
 
         }
@@ -249,8 +250,8 @@ const app = Vue.createApp({
             for(let i = 2012; i < currentYear + 3; i++){
                 this.calendar.yearOptions.push(i)
             }
-            
-            // console.log(this.calendar.yearOptions)
+
+            this.dropdownHovered = Array(this.calendar.yearOptions.length).fill(false)
 
             for(let i = 0; i < dateObj.getDay(); i++){
                 this.calendar.calendarDays.push(null)
@@ -331,7 +332,6 @@ const app = Vue.createApp({
                 })
                 .then((response) => {
                     this.calendar.daysContainingWorkout = response.data
-                    console.log(response.data)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -340,6 +340,9 @@ const app = Vue.createApp({
         setDaysHovered(index, isHovered, calendarDay){
             if (calendarDay === null) return
             this.daysHovered[index] = isHovered
+        },
+        setDropdownHovered(index, isHovered){
+            this.dropdownHovered[index] = isHovered
         }
     },
     created(){

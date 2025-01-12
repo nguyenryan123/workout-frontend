@@ -55,7 +55,7 @@
   }
 
   .month_displayed.hovered {
-    font-weight: 700;
+    font-weight: 750;
   }
 
   .button_left {
@@ -72,23 +72,28 @@
 
 
   .dropdown {
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
     background-color: white;
     width: 20%;
     position: relative;
-    left: 44%;
+    left: 42%;
     scrollbar-width: thin;
     border-radius: 10px;
   }
 
   .options {
     text-align: center;
-    padding-bottom: 25%;
-    border: 1px solid black;
+    padding-bottom: 30%;
+    padding-right: 10%;
+    padding-left: 15%;
+    border: 1px solid #4b4b4b;
+    background-color: #353535;
+    color: white;
     user-select: none;
     cursor: grab;
     font: 1em "Fira Sans", sans-serif;
+    border-radius: 3px;
   }
 
   .options.hovered {
