@@ -72,6 +72,7 @@
                         <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId" class="setItem">
                             <div class="workoutNameDisplay">
                                 {{ workoutDetail.workout_name}}
+                                <div class="addSetButtonInHeader"></div>
                             </div>
                             <ul>
                                 <li v-for="set in workoutDetail.sets">
