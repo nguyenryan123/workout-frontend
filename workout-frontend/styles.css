@@ -16,10 +16,12 @@
     color: #ffffff;
     font: 1em "Fira Sans", sans-serif;
     border-radius: 5px;
+    user-select: none;
   }
 
   .calendar_wrapper > div.hovered {
     background-color: #ca4f4f;
+    cursor: pointer;
   }
 
   .calendar_header {
@@ -51,7 +53,7 @@
     position: relative;
     line-height: 9px;
     user-select: none;
-    cursor: grab;
+    cursor: pointer;
   }
 
   .month_displayed.hovered {
@@ -91,7 +93,7 @@
     background-color: #353535;
     color: white;
     user-select: none;
-    cursor: grab;
+    cursor: pointer;
     font: 1em "Fira Sans", sans-serif;
     border-radius: 3px;
   }
@@ -155,6 +157,11 @@
     font-size: 0.9em;
     color: white;
     font: 1em "Fira Sans", sans-serif;
+    user-select: none;
+  }
+
+  .loginSignup-text:hover {
+    cursor: pointer;
   }
 
   .loginSignup-container {
