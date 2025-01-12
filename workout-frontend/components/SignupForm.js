@@ -3,12 +3,13 @@ app.component('signup-form',{
     /*html*/
     `
     <div>
-        <form class="signup-form" @submit.prevent="onSubmit">
+        <form class="loginSignup-form" @submit.prevent="onSubmit">
             <h3>Signup</h3>
             <input id="name" v-model="name">
             <input id="passkey" v-model="passkey">
-            <input class="button" type="submit" value="Submit">
+            <input class="button" type="submit" value="Signup">
         </form>
+        <p class="loginSignup-text">Have an account? Login here</p>
         
         <p v-show="showError">{{errorMessage}}</p>
     </div>

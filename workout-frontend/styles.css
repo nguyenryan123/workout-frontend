@@ -100,20 +100,24 @@
     background-color: #ca4f4f;
   }
 
-  .login-form {
+  .loginSignup-form {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
     padding: 20px;
+
+    /* width: 40%;
+    padding: 9%; */
+
     background-color: #ca4f4f;
     border-radius: 10px;
     margin: 20px auto 0;
   }
 
-  .login-form input[id="name"],
-  .login-form input[id="passkey"] {
+  .loginSignup-form input[id="name"],
+  .loginSignup-form input[id="passkey"] {
     display: block; /* Makes the input box take up its own line */
     width: 100%; /* Ensure the input box spans the full width of the form */
     margin: 10px auto; /* Center the input boxes horizontally */
@@ -123,7 +127,7 @@
     box-sizing: border-box; /* Ensures padding is included in the width */
   }
 
-  .login-form h3[id="login-text"] {
+  .loginSignup-form h3 {
     margin: 10px auto;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -144,3 +148,29 @@
     background-color: #752f2f;
     color: white;
   }
+
+  .loginSignup-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  .loginSignup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .loginSignup-error {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  /* .loginSignup-container {
+    
+  } */
