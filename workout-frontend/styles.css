@@ -178,6 +178,98 @@
     font: 1em "Fira Sans", sans-serif;
   }
 
-  /* .loginSignup-container {
-    
+  /* .setList > ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .setList ul > li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul, ol {
+    padding: 0;
+    margin: 0;
   } */
+
+  /* .setList {
+    width: 300px;
+    border-radius: 10px;
+    font-size: 200%;
+    padding-bottom: 0.1%;
+  }
+
+  .workoutNameDisplay {
+    text-align: center;
+    background-color: #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+    padding: 3%;
+    border: 1px solid gray;
+  }
+
+  .individualSet {
+    text-align: center;
+    padding-bottom: 5%;
+    vertical-align: middle;
+    background-color: rgb(0, 0, 0);
+    width: 95%;
+    margin: 10px auto;
+    border-radius: 5px;
+    font: 1em "Fira Sans", sans-serif;
+    color: white;
+    border: 1px solid gray;
+  } */
+
+  .setList {
+    list-style: none;
+    padding: 0;
+  }
+
+  .setItem {
+      /*Adjust for spacing between workouts */
+      margin-bottom: 40px;
+      /* background-color: #aa6f6f; */
+      width: 400px;
+      /* padding-bottom: 5px; */
+  }
+
+  .individualSet {
+      cursor: pointer;
+      background-color: #000000;
+      margin: 0px auto;
+      margin-bottom: 0px; /* Adjust for spacing between sets */
+      width: 99.5%;
+      text-align: center;
+      color: white;
+      font-size: 170%;
+      border: 1px solid gray;
+      font: 1.7em "Fira Sans", sans-serif;
+  }
+
+  .individualSet:hover {
+    background-color: rgb(0, 57, 107);
+  }
+
+  .workoutNameDisplay {
+      font-weight: bold;
+      color: rgb(255, 224, 224);
+      margin-bottom: 0px;
+      font-size: 200%;
+      text-align: center;
+      background-color: gray;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      font: 1.7em "Fira Sans", sans-serif;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
