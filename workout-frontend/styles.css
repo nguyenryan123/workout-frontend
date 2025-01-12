@@ -1,3 +1,7 @@
+body {
+  background-color: #89a7b1;
+}
+
 .calendar_wrapper {
     display: grid;
     grid-template-columns: repeat(7, 5fr);
@@ -38,12 +42,13 @@
   }
   
   .calendar {
-    position: relative;
-    left: 50px;
-    top: 30px;
-
+    margin: 0 auto;
+    /* margin-left: -150px; */
+    /* margin-top: 50px; */
     /* left: 50%;
-    top: 50%; */
+    top: 30px; */
+    position: absolute;
+    z-index: 1000;
   }
 
   .month_displayed {
@@ -58,6 +63,7 @@
 
   .month_displayed.hovered {
     font-weight: 750;
+    color: rgb(126, 126, 206)
   }
 
   .button_left {
@@ -178,103 +184,320 @@
     font: 1em "Fira Sans", sans-serif;
   }
 
-  /* .setList > ul{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .setList ul > li {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  ul, ol {
-    padding: 0;
-    margin: 0;
-  } */
-
-  /* .setList {
-    width: 300px;
-    border-radius: 10px;
-    font-size: 200%;
-    padding-bottom: 0.1%;
-  }
-
-  .workoutNameDisplay {
-    text-align: center;
-    background-color: #000000;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    font: 1em "Fira Sans", sans-serif;
-    padding: 3%;
-    border: 1px solid gray;
-  }
-
-  .individualSet {
-    text-align: center;
-    padding-bottom: 5%;
-    vertical-align: middle;
-    background-color: rgb(0, 0, 0);
-    width: 95%;
-    margin: 10px auto;
-    border-radius: 5px;
-    font: 1em "Fira Sans", sans-serif;
-    color: white;
-    border: 1px solid gray;
-  } */
-
   .setList {
     list-style: none;
     padding: 0;
+    /* max-height: 100px;
+    overflow-y: scroll; */
+  }
+
+  .setListContainer {
+    width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 90px;
   }
 
   .setItem {
-      /*Adjust for spacing between workouts */
-      margin-bottom: 40px;
-      /* background-color: #aa6f6f; */
-      width: 400px;
-      /* padding-bottom: 5px; */
+    /*Adjust for spacing between workouts */
+    margin-bottom: 40px;
+    /* background-color: #aa6f6f; */
+    width: 400px;
+    /* padding-bottom: 5px; */
   }
 
   .individualSet {
-      cursor: pointer;
-      background-color: #000000;
-      margin: 0px auto;
-      margin-bottom: 0px; /* Adjust for spacing between sets */
-      width: 99.5%;
-      text-align: center;
-      color: white;
-      font-size: 170%;
-      border: 1px solid gray;
-      font: 1.7em "Fira Sans", sans-serif;
+    cursor: pointer;
+    background-color: #cbdad5;
+    margin: 0px auto;
+    margin-bottom: 0px; /* Adjust for spacing between sets */
+    width: 99.5%;
+    text-align: center;
+    color: #34344e;
+    font-size: 170%;
+    border: 1px solid #3a415a;
+    font: 1.7em "Fira Sans", sans-serif;
+    user-select: none;
+  }
+
+  .individualSet.selected {
+    background-color: rgb(0, 57, 107);
+    color: white;
   }
 
   .individualSet:hover {
     background-color: rgb(0, 57, 107);
+    color: white;
   }
 
-  .workoutNameDisplay {
-      font-weight: bold;
-      color: rgb(255, 224, 224);
-      margin-bottom: 0px;
-      font-size: 200%;
-      text-align: center;
-      background-color: gray;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      font: 1.7em "Fira Sans", sans-serif;
+  .workoutList {
+    background-color: #3a415a;
+    width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 75px;
+    border: 1px solid black;
+  }
 
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      width: 100%;
-      box-sizing: border-box;
+  .addSetWorkoutListButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 280px;
+    color: white;
+  }
+
+  .addSetWorkoutListButton > p {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -3px;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  .editWorkoutNameButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 325px;
+  }
+
+  .editWorkoutNameButton > p{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -2px;
+    font: 0.67em "Fira Sans", sans-serif;
+  }
+
+  .deleteWorkoutButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 370px;
+  }
+
+  .deleteWorkoutButton > p{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -2px;
+    font: 0.67em "Fira Sans", sans-serif;
+  }
+
+  .workoutListButtons > div{
+    background-color: rgb(110, 69, 69);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+  }
+
+  .workoutListButtons > div:hover {
+    background-color: #ca4f4f;
+  }
+
+  .individualWorkout {
+    /* cursor: pointer; */
+    background-color: #cbdad5;
+    margin: 0px auto;
+    margin-bottom: 0px; /* Adjust for spacing between sets */
+    width: 99.5%;
+    /* text-align: center; */
+    /* color: white; */
+    font-size: 170%;
+    /* border: 1px solid gray; */
+    font: 1.7em "Fira Sans", sans-serif;
+    user-select: none;
+    border-radius: 5px;
+
+    color: #34344e;
+    border: 1px solid #3a415a;
+  }
+
+  /* .individualWorkout:hover {
+    background-color: #694141;
+  } */
+
+  .workoutNameDisplay {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    padding: 5px;
+    color: rgb(255, 224, 224);
+    margin-bottom: 0px;
+    font-size: 200%;
+    text-align: center;
+    background-color: #34344e;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font: 1.7em "Fira Sans", sans-serif;
+  }
+
+  .addSetButtonInHeader{
+    /* left: 370px; */
+    margin: 0 auto;
+    margin-left: 350px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    border-radius: 15px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .addSetButtonInHeader:hover{
+    background-color: wheat;
+  }
+
+  .addSetButtonInHeader > p {
+    text-align: center;
+    margin: -3px auto;
+  }
+
+  /* addWorkoutButton refers to the button in footer. i dont know why i name it like this. im so stupid */
+  .addNewWorkoutButton {
+    width: 100%;
+    height: 70px;
+    background-color: #3a415a;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .addNewWorkoutButton:hover {
+    background-color: #89a7b1;
+  }
+
+  .addNewWorkoutButton > p{
+    margin: 0 auto;
+    text-align: center;
+    font: 1.7em "Fira Sans", sans-serif;
+    color: white;
   }
 
   ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
+  }
+
+
+  /* footer is now header because it covers up workouts if it's on the bottom */
+  .footer {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    background-color: #566981;
+    top: 0;
+    left: 0%;
+  }
+
+  .footer-content {
+    display: flex;
+    /* background-color: #2e8d78; */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    margin-top: 10px;
+  }
+
+  .editButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.7em "Fira Sans", sans-serif;
+  }
+
+  .deleteButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 270px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.5em "Fira Sans", sans-serif;
+  }
+
+  .cancelButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 530px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.5em "Fira Sans", sans-serif;
+  }
+
+  .addWorkoutButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.1em "Fira Sans", sans-serif;
+  }
+
+  .calendarButton {
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 210px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.1em "Fira Sans", sans-serif;
+    user-select: none;
+  }
+
+  .logoutButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 430px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.5em "Fira Sans", sans-serif;
+  }
+
+  .goBackButton {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 270px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.2em "Fira Sans", sans-serif;
+  }
+
+  .editButton > p {
+    margin: 0 auto;
+    margin-top: 20px;
   }
