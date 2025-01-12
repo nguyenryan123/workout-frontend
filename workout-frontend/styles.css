@@ -99,3 +99,48 @@
   .options.hovered {
     background-color: #ca4f4f;
   }
+
+  .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #ca4f4f;
+    border-radius: 10px;
+    margin: 20px auto 0;
+  }
+
+  .login-form input[id="name"],
+  .login-form input[id="passkey"] {
+    display: block; /* Makes the input box take up its own line */
+    width: 100%; /* Ensure the input box spans the full width of the form */
+    margin: 10px auto; /* Center the input boxes horizontally */
+    padding: 10px; /* Add internal spacing for better usability */
+    border: 1px solid #ccc; /* Add a border for styling */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+
+  .login-form h3[id="login-text"] {
+    margin: 10px auto;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font: 1.3em "Fira Sans", sans-serif;
+  }
+
+  .button[type="submit"] {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+  }
+
+  .button[type="submit"]:hover {
+    background-color: #752f2f;
+    color: white;
+  }

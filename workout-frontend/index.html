@@ -16,8 +16,11 @@
             <!-- <button @click="getAccounts">get accounts</button> -->
             <button v-show="loggedIn" @click="logout">logout</button>
 
-            <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
-            <signup-form v-show="!loggedIn"></signup-form>
+            <div>
+                <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
+                <signup-form v-show="!loggedIn"></signup-form>
+            </div>
+            
             
 
             <div class="calendar" v-show="showCalendar">

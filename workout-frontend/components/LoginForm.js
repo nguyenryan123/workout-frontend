@@ -4,10 +4,10 @@ app.component('login-form',{
     `
     <div>
         <form class="login-form" @submit.prevent="onSubmit">
-            <h3>Login</h3>
+            <h3 id="login-text">Login</h3>
             <input id="name" v-model="name">
             <input id="passkey" v-model="passkey" type="password">
-            <input class="button" type="submit" value="Submit">
+            <input class="button" type="submit" value="Login">
         </form>
         
         <p v-show="showError">{{errorMessage}}</p>
