@@ -23,7 +23,7 @@
             <div class="calendar" v-show="showCalendar">
                 <div class="calendar_header">
                     <div>
-                        <h2 class="month_displayed" @click="toggleDropdown">{{ calendar.monthDisplayed }}</h2>
+                        <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>
                         <div class="dropdown" v-show="showDropdown">
                             <div v-for="year in calendar.yearOptions" class="options" @click="selectYear(year)">
                                 <div>{{ year }}</div>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="calendar_wrapper">
-                    <div v-for="calendarDay in calendar.calendarDays" @click="selectDay(calendarDay)" :style="{color: calendar.daysContainingWorkout.includes(calendarDay) ? 'white' : '#a43737'}">
+                    <div v-for="(calendarDay, index) in calendar.calendarDays" @click="selectDay(calendarDay)" :style="{color: calendar.daysContainingWorkout.includes(calendarDay) ? 'gold' : 'white'}" :class="{'hovered': daysHovered[index]}" @mouseover="setDaysHovered(index, true, calendarDay)" @mouseleave="setDaysHovered(index, false, calendarDay)">
                         {{ calendarDay }}
                     </div>
                 </div>

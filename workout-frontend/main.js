@@ -6,11 +6,6 @@ const app = Vue.createApp({
             workouts: [],
             workoutDetails: [],
             date: '',
-            // formDate: {
-            //     year: '',
-            //     month: '',
-            //     day: ''
-            // },
             selectedWorkout: null,
             selectedSet: null,
             calendar: {
@@ -23,7 +18,9 @@ const app = Vue.createApp({
                 daysContainingWorkout: []
             },
             showDropdown: false,
-            showCalendar: false
+            showCalendar: false,
+            isHovered: false,
+            daysHovered: []
             
 
         }
@@ -271,6 +268,8 @@ const app = Vue.createApp({
                 this.calendar.calendarDays.push(null)
             }
 
+            this.daysHovered = Array(this.calendar.calendarDays.length).fill(false)
+
             this.calendar.monthDisplayed = this.calendar.months[this.calendar.month] + ' ' + this.calendar.year
         },
         selectDay(day){
@@ -337,6 +336,10 @@ const app = Vue.createApp({
                 .catch((error) => {
                     console.log(error)
                 })
+        },
+        setDaysHovered(index, isHovered, calendarDay){
+            if (calendarDay === null) return
+            this.daysHovered[index] = isHovered
         }
     },
     created(){

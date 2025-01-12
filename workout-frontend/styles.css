@@ -5,30 +5,33 @@
     row-gap: 0em;
     width: 100px;
     height: 100px;
-
-    /* border: 2px solid #f76707;
-    border-radius: 1px;
-    background-color: #fff4e6; */
   }
   
   .calendar_wrapper > div {
-    border: 2px solid #ffa6a6;
+    border: 1px solid #4b4b4b;
     aspect-ratio: 1/1;
     border-radius: 1px;
-    background-color: #ffd1d1;
+    background-color: #000000;
     padding: 1em;
-    color: #a43737;
+    color: #ffffff;
     font: 1em "Fira Sans", sans-serif;
+    border-radius: 5px;
+  }
+
+  .calendar_wrapper > div.hovered {
+    background-color: #ca4f4f;
   }
 
   .calendar_header {
     padding: 10px;
     padding-bottom: 55px;
-    width: 382px;
+    /* width: 382px; */
+    width: 365px;
     height: 50px;
     box-sizing: border-box;
     position: relative;
-    background-color: #ca4f4f;
+    background-color: #000000;
+    border-radius: 5px;
     /* overflow: hidden; */
   }
   
@@ -47,6 +50,12 @@
     color: white;
     position: relative;
     line-height: 9px;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .month_displayed.hovered {
+    font-weight: 700;
   }
 
   .button_left {
@@ -57,7 +66,7 @@
   
   .button_right {
     position: absolute;
-    left: 333px;
+    left: 310px;
     bottom: 20px;
   }
 
@@ -66,13 +75,22 @@
     max-height: 200px;
     overflow-y: auto;
     background-color: white;
-    width: 15%;
+    width: 20%;
     position: relative;
     left: 44%;
+    scrollbar-width: thin;
+    border-radius: 10px;
   }
 
   .options {
     text-align: center;
     padding-bottom: 25%;
     border: 1px solid black;
+    user-select: none;
+    cursor: grab;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  .options.hovered {
+    background-color: #ca4f4f;
   }
