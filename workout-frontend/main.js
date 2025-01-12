@@ -69,7 +69,6 @@ const app = Vue.createApp({
                 this.workoutDetails.length = 0
             }
 
-            // console.log(this.loggedIn)
         },
         getWorkouts(){
             axios
@@ -111,11 +110,6 @@ const app = Vue.createApp({
             this.selectedSet = setId
             console.log(this.selectedSet)
         },
-        // setDate(){
-        //     // console.log(this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day)
-        //     this.date = this.formDate.year + '-' + this.formDate.month + '-' +this.formDate.day
-        //     this.getWorkoutDetails()
-        // },
         addWorkout(){
             let workout_name = prompt("Enter name of workout")
             if(workout_name === null){
@@ -245,7 +239,6 @@ const app = Vue.createApp({
             
             this.calendar.yearOptions.length = 0
 
-            // console.log(2012 < currentYear)
             
             for(let i = 2012; i < currentYear + 3; i++){
                 this.calendar.yearOptions.push(i)
@@ -279,7 +272,7 @@ const app = Vue.createApp({
             if(_day < 10){
                 _day = '0' + _day
             }
-            // console.log(this.calendar.year + '-' + (this.calendar.month + 1) + '-' + _day)
+
             let _month = this.calendar.month + 1
             if(_month < 10){
                 _month = '0' + _month
