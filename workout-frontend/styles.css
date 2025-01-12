@@ -243,6 +243,7 @@ body {
     margin: 0 auto;
     margin-top: -28px;
     margin-left: 280px;
+    color: white;
   }
 
   .addSetWorkoutListButton > p {
@@ -293,17 +294,20 @@ body {
 
   .individualWorkout {
     /* cursor: pointer; */
-    background-color: #89a7b1;
+    background-color: #cbdad5;
     margin: 0px auto;
     margin-bottom: 0px; /* Adjust for spacing between sets */
     width: 99.5%;
     /* text-align: center; */
-    color: white;
+    /* color: white; */
     font-size: 170%;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     font: 1.7em "Fira Sans", sans-serif;
     user-select: none;
     border-radius: 5px;
+
+    color: #34344e;
+    border: 1px solid #3a415a;
   }
 
   /* .individualWorkout:hover {
