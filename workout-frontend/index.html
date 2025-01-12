@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>workout login</title>
+        <link rel="stylesheet" href="styles.css">
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -17,17 +18,45 @@
 
             <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
             <signup-form v-show="!loggedIn"></signup-form>
+            
+
+            <div class="calendar" v-show="showCalendar">
+                <div class="calendar_header">
+                    <div>
+                        <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>
+                        <div class="dropdown" v-show="showDropdown">
+                            <div v-for="year in calendar.yearOptions" class="options" @click="selectYear(year)">
+                                <div>{{ year }}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <button class="button_left" @click="incrementMonth(-1)">left</button>
+                    <button class="button_right" @click="incrementMonth(1)">right</button>
+                </div>
+
+                <div class="calendar_wrapper">
+                    <div v-for="(calendarDay, index) in calendar.calendarDays" @click="selectDay(calendarDay)" :style="{color: calendar.daysContainingWorkout.includes(calendarDay) ? 'gold' : 'white'}" :class="{'hovered': daysHovered[index]}" @mouseover="setDaysHovered(index, true, calendarDay)" @mouseleave="setDaysHovered(index, false, calendarDay)">
+                        {{ calendarDay }}
+                    </div>
+                </div>
+            </div>
+            
+
+            
 
             <div v-show="loggedIn">
-                <div class="selectDate">
-                    <p>date: {{ date }}</p>
+                <p @click="toggleCalendar">date: {{ date }}</p>
+                <!-- <div class="selectDate">
+                    <p @click="toggleCalendar">date: {{ date }}</p>
                     <form class="date-select" @submit.prevent="setDate">
                         <input id="year" v-model="this.formDate.year">
                         <input id="month" v-model="this.formDate.month" maxlength="2">
                         <input id="day" v-model="this.formDate.day" maxlength="2">
                         <input class="button" type="submit" value="Submit">
                     </form>
-                </div>
+                </div> -->
     
                 <div class="workoutList">
                     <ul>
@@ -38,6 +67,10 @@
 
                     <button @click="addWorkout">add workout</button>
                     <button @click="addSet">add set</button>
+                    <button @click="deleteWorkout">delete workout</button>
+                    <button @click="deleteSet">delete set</button>
+                    <button @click="editWorkout">edit workout name</button>
+                    <button @click="editSet">edit set</button>
                 </div>
     
                 <div class="setList">

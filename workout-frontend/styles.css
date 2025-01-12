@@ -1,0 +1,96 @@
+.calendar_wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 5fr);
+    column-gap: 0px;
+    row-gap: 0em;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .calendar_wrapper > div {
+    border: 1px solid #4b4b4b;
+    aspect-ratio: 1/1;
+    border-radius: 1px;
+    background-color: #000000;
+    padding: 1em;
+    color: #ffffff;
+    font: 1em "Fira Sans", sans-serif;
+    border-radius: 5px;
+  }
+
+  .calendar_wrapper > div.hovered {
+    background-color: #ca4f4f;
+  }
+
+  .calendar_header {
+    padding: 10px;
+    padding-bottom: 55px;
+    /* width: 382px; */
+    width: 365px;
+    height: 50px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #000000;
+    border-radius: 5px;
+    /* overflow: hidden; */
+  }
+  
+  .calendar {
+    position: relative;
+    left: 50px;
+    top: 30px;
+
+    /* left: 50%;
+    top: 50%; */
+  }
+
+  .month_displayed {
+    font: 1.3em "Fira Sans", sans-serif;
+    text-align: center;
+    color: white;
+    position: relative;
+    line-height: 9px;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .month_displayed.hovered {
+    font-weight: 700;
+  }
+
+  .button_left {
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+  }
+  
+  .button_right {
+    position: absolute;
+    left: 310px;
+    bottom: 20px;
+  }
+
+
+  .dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    width: 20%;
+    position: relative;
+    left: 44%;
+    scrollbar-width: thin;
+    border-radius: 10px;
+  }
+
+  .options {
+    text-align: center;
+    padding-bottom: 25%;
+    border: 1px solid black;
+    user-select: none;
+    cursor: grab;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  .options.hovered {
+    background-color: #ca4f4f;
+  }
