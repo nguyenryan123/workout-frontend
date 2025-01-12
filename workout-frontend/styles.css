@@ -1,3 +1,7 @@
+body {
+  background-color: #301c1c;
+}
+
 .calendar_wrapper {
     display: grid;
     grid-template-columns: repeat(7, 5fr);
@@ -181,6 +185,15 @@
   .setList {
     list-style: none;
     padding: 0;
+    /* max-height: 100px;
+    overflow-y: scroll; */
+  }
+
+  .setListContainer {
+    width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 30px;
   }
 
   .setItem {
@@ -205,9 +218,91 @@
     user-select: none;
   }
 
+  .individualSet.selected {
+    background-color: rgb(0, 57, 107);
+  }
+
   .individualSet:hover {
     background-color: rgb(0, 57, 107);
   }
+
+  .workoutList {
+    background-color: #7e2f2f;
+    width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .addSetWorkoutListButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 280px;
+  }
+
+  .addSetWorkoutListButton > p {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -3px;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  .editWorkoutNameButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 325px;
+  }
+
+  .editWorkoutNameButton > p{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -2px;
+    font: 0.67em "Fira Sans", sans-serif;
+  }
+
+  .deleteWorkoutButton {
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: -28px;
+    margin-left: 370px;
+  }
+
+  .deleteWorkoutButton > p{
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -2px;
+    font: 0.67em "Fira Sans", sans-serif;
+  }
+
+  .workoutListButtons > div{
+    background-color: rgb(110, 69, 69);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+  }
+
+  .workoutListButtons > div:hover {
+    background-color: #ca4f4f;
+  }
+
+  .individualWorkout {
+    /* cursor: pointer; */
+    background-color: #000000;
+    margin: 0px auto;
+    margin-bottom: 0px; /* Adjust for spacing between sets */
+    width: 99.5%;
+    /* text-align: center; */
+    color: white;
+    font-size: 170%;
+    border: 1px solid gray;
+    font: 1.7em "Fira Sans", sans-serif;
+    user-select: none;
+  }
+
+  /* .individualWorkout:hover {
+    background-color: #694141;
+  } */
 
   .workoutNameDisplay {
     display: flex;
@@ -225,7 +320,9 @@
   }
 
   .addSetButtonInHeader{
-    left: 370px;
+    /* left: 370px; */
+    margin: 0 auto;
+    margin-left: 350px;
     position: absolute;
     width: 24px;
     height: 24px;
@@ -244,18 +341,40 @@
     margin: -3px auto;
   }
 
+  /* addWorkoutButton refers to the button in footer. i dont know why i name it like this. im so stupid */
+  .addNewWorkoutButton {
+    width: 100%;
+    height: 70px;
+    background-color: #000000;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .addNewWorkoutButton:hover {
+    background-color: #f39696;
+  }
+
+  .addNewWorkoutButton > p{
+    margin: 0 auto;
+    text-align: left;
+    font: 1.7em "Fira Sans", sans-serif;
+    color: white;
+  }
+
   ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
   }
 
+
+  /* footer is now header because it covers up workouts if it's on the bottom */
   .footer {
     position: fixed;
     width: 100%;
     height: 120px;
     background-color: #694141;
-    bottom: 0;
+    top: 0;
     left: 0%;
   }
 

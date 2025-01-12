@@ -51,44 +51,59 @@
 
 
             <div v-show="loggedIn">
+
                 <p @click="toggleCalendar">date: {{ date }}</p>
-                <div class="workoutList">
+                <div class="workoutList" v-show="currentView === 'workoutList'">
+
+                    <div class="addNewWorkoutButton" @click="addWorkout"><p>Create New Workout</p></div>
                     <ul>
                         <li v-for="workout in workouts" :key="workout.workoutId">
-                            <button @click="selectWorkout(workout.workoutId)">{{ workout.workoutName }}</button>
-                        </li>
-                    </ul>
-
-                    <button @click="addWorkout">add workout</button>
-                    <button @click="addSet">add set</button>
-                    <button @click="deleteWorkout">delete workout</button>
-                    <!-- <button @click="deleteSet">delete set</button> -->
-                    <button @click="editWorkout">edit workout name</button>
-                    <button @click="editSet">edit set</button>
-                </div>
-    
-                <div class="setList">
-                    <ul>
-                        <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workout_id" class="setItem">
-                            <div class="workoutNameDisplay">
-                                {{ workoutDetail.workout_name}}
-                                <div class="addSetButtonInHeader" @click="selectWorkout(workoutDetail.workout_id); addSet()">
-                                    <p>+</p>
+                            <div class="individualWorkout">
+                                {{ workout.workoutName }}
+                                <div class="workoutListButtons">
+                                    <div class="addSetWorkoutListButton" @click="selectWorkout(workout.workoutId); addSet(); changeView('home')"><p>+</p></div>
+                                    <div class="editWorkoutNameButton" @click="selectWorkout(workout.workoutId); editWorkout()"><p>✏️</p></div>
+                                    <div class="deleteWorkoutButton" @click="selectWorkout(workout.workoutId); deleteWorkout()"><p>🗑️</p></div>
                                 </div>
                             </div>
-                            <ul>
-                                <li v-for="set in workoutDetail.sets">
-                                    <div @click="selectSet(set.setId)" class="individualSet">weight: {{ set.weight }} reps: {{ set.reps }}</div>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
+<!-- 
+                <button @click="addWorkout">add workout</button>
+                <button @click="addSet">add set</button>
+                <button @click="deleteWorkout">delete workout</button>
+                <button @click="deleteSet">delete set</button>
+                <button @click="editWorkout">edit workout name</button>
+                <button @click="editSet">edit set</button> -->
+                
+                <!-- views: home, workoutList, loginScreen -->
+
+                <div class="setListContainer">
+                    <div class="setList" v-show="currentView === 'home'">
+                        <ul>
+                            <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workout_id" class="setItem">
+                                <div class="workoutNameDisplay">
+                                    {{ workoutDetail.workout_name}}
+                                    <div class="addSetButtonInHeader" @click="selectWorkout(workoutDetail.workout_id); addSet()">
+                                        <p>+</p>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li v-for="set in workoutDetail.sets">
+                                        <div @click="selectSet(set.setId)" class="individualSet" :class="{selected: selectedSet === set.setId}">weight: {{ set.weight }} reps: {{ set.reps }}</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
 
                 <div class="footer" v-show="loggedIn">
                     <div class="footer-content">
                         <div class="showWhenSetSelected" v-show="selectedSet !== null">
-                            <div class="editButton">
+                            <div class="editButton" @click="editSet(); selectSet(null)">
                                 <p>edit</p>
                             </div>
                             
@@ -102,13 +117,13 @@
                         </div>
                         
                         <div class="showWhenOnWorkoutScreen" v-show="currentView === 'workoutList'">
-                            <div class="goBackButton">
+                            <div class="goBackButton" @click="changeView('home')">
                                 <p>go back</p>
                             </div>
                         </div>
 
                         <div class="showWhenOnHomePage" v-show="currentView === 'home' && selectedSet === null">
-                            <div class="addWorkoutButton">
+                            <div class="addWorkoutButton" @click="changeView('workoutList')">
                                 <p>add workout</p>
                             </div>
 
