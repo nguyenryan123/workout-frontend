@@ -52,7 +52,7 @@
 
             <div v-show="loggedIn">
 
-                <p @click="toggleCalendar">date: {{ date }}</p>
+                <!-- <p @click="toggleCalendar">date: {{ date }}</p> -->
                 <div class="workoutList" v-show="currentView === 'workoutList'">
 
                     <div class="addNewWorkoutButton" @click="addWorkout"><p>Create New Workout</p></div>
@@ -69,13 +69,6 @@
                         </li>
                     </ul>
                 </div>
-<!-- 
-                <button @click="addWorkout">add workout</button>
-                <button @click="addSet">add set</button>
-                <button @click="deleteWorkout">delete workout</button>
-                <button @click="deleteSet">delete set</button>
-                <button @click="editWorkout">edit workout name</button>
-                <button @click="editSet">edit set</button> -->
                 
                 <!-- views: home, workoutList, loginScreen -->
 
@@ -129,6 +122,10 @@
 
                             <div class="logoutButton" @click="logout">
                                 <p>logout</p>
+                            </div>
+
+                            <div class="calendarButton" @click="toggleCalendar">
+                                <p>{{date.substring(8,10) + ' ' + calendar.monthDisplayed }}</p>
                             </div>
                         </div>
 

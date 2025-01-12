@@ -42,12 +42,13 @@ body {
   }
   
   .calendar {
-    position: relative;
-    left: 50px;
-    top: 30px;
-
+    margin: 0 auto;
+    /* margin-left: -150px; */
+    /* margin-top: 50px; */
     /* left: 50%;
-    top: 50%; */
+    top: 30px; */
+    position: absolute;
+    z-index: 1000;
   }
 
   .month_displayed {
@@ -193,7 +194,7 @@ body {
     width: 400px;
     padding: 10px;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 90px;
   }
 
   .setItem {
@@ -444,12 +445,27 @@ body {
     height: 70px;
     top: 25px;
     margin: 0 auto;
-    margin-left: 140px;
+    margin-left: 100px;
     background-color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
     font: 1.1em "Fira Sans", sans-serif;
+  }
+
+  .calendarButton {
+    position: absolute;
+    width: 180px;
+    height: 70px;
+    top: 25px;
+    margin: 0 auto;
+    margin-left: 210px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    font: 1.1em "Fira Sans", sans-serif;
+    user-select: none;
   }
 
   .logoutButton {
@@ -458,7 +474,7 @@ body {
     height: 70px;
     top: 25px;
     margin: 0 auto;
-    margin-left: 410px;
+    margin-left: 430px;
     background-color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
