@@ -2,15 +2,18 @@ app.component('login-form',{
     template:
     /*html*/
     `
-    <div>
-        <form class="login-form" @submit.prevent="onSubmit">
-            <h3>Login</h3>
+    <div class="loginSignup-container">
+        <form class="loginSignup-form" @submit.prevent="onSubmit">
+            <h3 id="login-text">Login</h3>
             <input id="name" v-model="name">
             <input id="passkey" v-model="passkey" type="password">
-            <input class="button" type="submit" value="Submit">
+            <input class="button" type="submit" value="Login">
+
+            <p class="loginSignup-error" v-show="showError">{{errorMessage}}</p>
+            <p class="loginSignup-text" @click="changeView">Don't have an account? Sign up here</p>
         </form>
         
-        <p v-show="showError">{{errorMessage}}</p>
+        
     </div>
     `,
 
@@ -56,6 +59,9 @@ app.component('login-form',{
 
             this.name = ''
             this.passkey = ''
+        },
+        changeView(){
+            this.$emit('change-view')
         }
     }
 })

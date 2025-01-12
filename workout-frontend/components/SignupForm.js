@@ -3,14 +3,16 @@ app.component('signup-form',{
     /*html*/
     `
     <div>
-        <form class="signup-form" @submit.prevent="onSubmit">
+        <form class="loginSignup-form" @submit.prevent="onSubmit">
             <h3>Signup</h3>
             <input id="name" v-model="name">
             <input id="passkey" v-model="passkey">
-            <input class="button" type="submit" value="Submit">
+            <input class="button" type="submit" value="Signup">
+            <p class="loginSignup-error" v-show="showError">{{errorMessage}}</p>
+            <p class="loginSignup-text" @click="changeView">Have an account? Login here</p>
         </form>
         
-        <p v-show="showError">{{errorMessage}}</p>
+        
     </div>
     `,
 
@@ -59,6 +61,9 @@ app.component('signup-form',{
 
             this.name = ''
             this.passkey = ''
+        },
+        changeView(){
+            this.$emit('change-view')
         }
     }
 })

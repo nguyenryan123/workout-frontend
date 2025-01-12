@@ -16,11 +16,14 @@
             <!-- <button @click="getAccounts">get accounts</button> -->
             <button v-show="loggedIn" @click="logout">logout</button>
 
-            <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
-            <signup-form v-show="!loggedIn"></signup-form>
+            <div>
+                <login-form v-show="!loggedIn && currentView === 'loginScreen'" @update-message="updateMessage" @change-view="changeView('signupScreen')"></login-form>
+                <signup-form v-show="!loggedIn && currentView === 'signupScreen'" @change-view="changeView('loginScreen')"></signup-form>
+            </div>
+            
             
 
-            <div class="calendar" v-show="showCalendar">
+            <div class="calendar" v-show="showCalendar && loggedIn">
                 <div class="calendar_header">
                     <div>
                         <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>
@@ -66,13 +69,13 @@
     
                 <div class="setList">
                     <ul>
-                        <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId">
-                            <div>
-                                Workout Name: {{ workoutDetail.workout_name}}
+                        <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workoutId" class="setItem">
+                            <div class="workoutNameDisplay">
+                                {{ workoutDetail.workout_name}}
                             </div>
                             <ul>
                                 <li v-for="set in workoutDetail.sets">
-                                    <button @click="selectSet(set.setId)">weight: {{ set.weight }} reps: {{ set.reps }}</button>
+                                    <div @click="selectSet(set.setId)" class="individualSet">weight: {{ set.weight }} reps: {{ set.reps }}</div>
                                 </li>
                             </ul>
                         </li>

@@ -16,10 +16,12 @@
     color: #ffffff;
     font: 1em "Fira Sans", sans-serif;
     border-radius: 5px;
+    user-select: none;
   }
 
   .calendar_wrapper > div.hovered {
     background-color: #ca4f4f;
+    cursor: pointer;
   }
 
   .calendar_header {
@@ -51,7 +53,7 @@
     position: relative;
     line-height: 9px;
     user-select: none;
-    cursor: grab;
+    cursor: pointer;
   }
 
   .month_displayed.hovered {
@@ -91,11 +93,188 @@
     background-color: #353535;
     color: white;
     user-select: none;
-    cursor: grab;
+    cursor: pointer;
     font: 1em "Fira Sans", sans-serif;
     border-radius: 3px;
   }
 
   .options.hovered {
     background-color: #ca4f4f;
+  }
+
+  .loginSignup-form {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+
+    /* width: 40%;
+    padding: 9%; */
+
+    background-color: #ca4f4f;
+    border-radius: 10px;
+    margin: 20px auto 0;
+  }
+
+  .loginSignup-form input[id="name"],
+  .loginSignup-form input[id="passkey"] {
+    display: block; /* Makes the input box take up its own line */
+    width: 100%; /* Ensure the input box spans the full width of the form */
+    margin: 10px auto; /* Center the input boxes horizontally */
+    padding: 10px; /* Add internal spacing for better usability */
+    border: 1px solid #ccc; /* Add a border for styling */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+
+  .loginSignup-form h3 {
+    margin: 10px auto;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font: 1.3em "Fira Sans", sans-serif;
+  }
+
+  .button[type="submit"] {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+  }
+
+  .button[type="submit"]:hover {
+    background-color: #752f2f;
+    color: white;
+  }
+
+  .loginSignup-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+    user-select: none;
+  }
+
+  .loginSignup-text:hover {
+    cursor: pointer;
+  }
+
+  .loginSignup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .loginSignup-error {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+  }
+
+  /* .setList > ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .setList ul > li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul, ol {
+    padding: 0;
+    margin: 0;
+  } */
+
+  /* .setList {
+    width: 300px;
+    border-radius: 10px;
+    font-size: 200%;
+    padding-bottom: 0.1%;
+  }
+
+  .workoutNameDisplay {
+    text-align: center;
+    background-color: #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    font: 1em "Fira Sans", sans-serif;
+    padding: 3%;
+    border: 1px solid gray;
+  }
+
+  .individualSet {
+    text-align: center;
+    padding-bottom: 5%;
+    vertical-align: middle;
+    background-color: rgb(0, 0, 0);
+    width: 95%;
+    margin: 10px auto;
+    border-radius: 5px;
+    font: 1em "Fira Sans", sans-serif;
+    color: white;
+    border: 1px solid gray;
+  } */
+
+  .setList {
+    list-style: none;
+    padding: 0;
+  }
+
+  .setItem {
+      /*Adjust for spacing between workouts */
+      margin-bottom: 40px;
+      /* background-color: #aa6f6f; */
+      width: 400px;
+      /* padding-bottom: 5px; */
+  }
+
+  .individualSet {
+      cursor: pointer;
+      background-color: #000000;
+      margin: 0px auto;
+      margin-bottom: 0px; /* Adjust for spacing between sets */
+      width: 99.5%;
+      text-align: center;
+      color: white;
+      font-size: 170%;
+      border: 1px solid gray;
+      font: 1.7em "Fira Sans", sans-serif;
+  }
+
+  .individualSet:hover {
+    background-color: rgb(0, 57, 107);
+  }
+
+  .workoutNameDisplay {
+      font-weight: bold;
+      color: rgb(255, 224, 224);
+      margin-bottom: 0px;
+      font-size: 200%;
+      text-align: center;
+      background-color: gray;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      font: 1.7em "Fira Sans", sans-serif;
+
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
   }
