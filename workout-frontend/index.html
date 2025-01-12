@@ -17,13 +17,13 @@
             <button v-show="loggedIn" @click="logout">logout</button>
 
             <div>
-                <login-form v-show="!loggedIn" @update-message="updateMessage"></login-form>
-                <!-- <signup-form v-show="!loggedIn"></signup-form> -->
+                <login-form v-show="!loggedIn && currentView === 'loginScreen'" @update-message="updateMessage" @change-view="changeView('signupScreen')"></login-form>
+                <signup-form v-show="!loggedIn && currentView === 'signupScreen'" @change-view="changeView('loginScreen')"></signup-form>
             </div>
             
             
 
-            <div class="calendar" v-show="showCalendar">
+            <div class="calendar" v-show="showCalendar && loggedIn">
                 <div class="calendar_header">
                     <div>
                         <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>

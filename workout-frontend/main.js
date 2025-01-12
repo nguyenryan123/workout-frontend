@@ -21,7 +21,8 @@ const app = Vue.createApp({
             showCalendar: false,
             isHovered: false,
             daysHovered: [],
-            dropdownHovered: []
+            dropdownHovered: [],
+            currentView: 'loginScreen'
             
 
         }
@@ -336,6 +337,9 @@ const app = Vue.createApp({
         },
         setDropdownHovered(index, isHovered){
             this.dropdownHovered[index] = isHovered
+        },
+        changeView(view){
+            this.currentView = view
         }
     },
     created(){

@@ -8,10 +8,11 @@ app.component('signup-form',{
             <input id="name" v-model="name">
             <input id="passkey" v-model="passkey">
             <input class="button" type="submit" value="Signup">
+            <p class="loginSignup-error" v-show="showError">{{errorMessage}}</p>
+            <p class="loginSignup-text" @click="changeView">Have an account? Login here</p>
         </form>
-        <p class="loginSignup-text">Have an account? Login here</p>
         
-        <p v-show="showError">{{errorMessage}}</p>
+        
     </div>
     `,
 
@@ -60,6 +61,9 @@ app.component('signup-form',{
 
             this.name = ''
             this.passkey = ''
+        },
+        changeView(){
+            this.$emit('change-view')
         }
     }
 })
