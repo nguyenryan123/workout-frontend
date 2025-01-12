@@ -1,5 +1,5 @@
 body {
-  background-color: #301c1c;
+  background-color: #89a7b1;
 }
 
 .calendar_wrapper {
@@ -206,31 +206,36 @@ body {
 
   .individualSet {
     cursor: pointer;
-    background-color: #000000;
+    background-color: #cbdad5;
     margin: 0px auto;
     margin-bottom: 0px; /* Adjust for spacing between sets */
     width: 99.5%;
     text-align: center;
-    color: white;
+    color: #34344e;
     font-size: 170%;
-    border: 1px solid gray;
+    border: 1px solid #3a415a;
     font: 1.7em "Fira Sans", sans-serif;
     user-select: none;
   }
 
   .individualSet.selected {
     background-color: rgb(0, 57, 107);
+    color: white;
   }
 
   .individualSet:hover {
     background-color: rgb(0, 57, 107);
+    color: white;
   }
 
   .workoutList {
-    background-color: #7e2f2f;
+    background-color: #3a415a;
     width: 400px;
     padding: 10px;
     margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 50px;
+    border: 1px solid black;
   }
 
   .addSetWorkoutListButton {
@@ -288,7 +293,7 @@ body {
 
   .individualWorkout {
     /* cursor: pointer; */
-    background-color: #000000;
+    background-color: #89a7b1;
     margin: 0px auto;
     margin-bottom: 0px; /* Adjust for spacing between sets */
     width: 99.5%;
@@ -298,6 +303,7 @@ body {
     border: 1px solid gray;
     font: 1.7em "Fira Sans", sans-serif;
     user-select: none;
+    border-radius: 5px;
   }
 
   /* .individualWorkout:hover {
@@ -313,7 +319,7 @@ body {
     margin-bottom: 0px;
     font-size: 200%;
     text-align: center;
-    background-color: gray;
+    background-color: #34344e;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     font: 1.7em "Fira Sans", sans-serif;
@@ -345,18 +351,19 @@ body {
   .addNewWorkoutButton {
     width: 100%;
     height: 70px;
-    background-color: #000000;
+    background-color: #3a415a;
     user-select: none;
     cursor: pointer;
+    border-radius: 10px;
   }
 
   .addNewWorkoutButton:hover {
-    background-color: #f39696;
+    background-color: #89a7b1;
   }
 
   .addNewWorkoutButton > p{
     margin: 0 auto;
-    text-align: left;
+    text-align: center;
     font: 1.7em "Fira Sans", sans-serif;
     color: white;
   }
@@ -373,14 +380,14 @@ body {
     position: fixed;
     width: 100%;
     height: 120px;
-    background-color: #694141;
+    background-color: #566981;
     top: 0;
     left: 0%;
   }
 
   .footer-content {
     display: flex;
-    background-color: #944040;
+    /* background-color: #2e8d78; */
     max-width: 600px;
     margin: 0 auto;
     padding: 50px 20px;
