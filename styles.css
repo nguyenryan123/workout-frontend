@@ -31,22 +31,16 @@ body {
   .calendar_header {
     padding: 10px;
     padding-bottom: 55px;
-    /* width: 382px; */
     width: 365px;
     height: 50px;
     box-sizing: border-box;
     position: relative;
     background-color: #000000;
     border-radius: 5px;
-    /* overflow: hidden; */
   }
   
   .calendar {
     margin: 0 auto;
-    /* margin-left: -150px; */
-    /* margin-top: 50px; */
-    /* left: 50%;
-    top: 30px; */
     position: absolute;
     z-index: 1000;
   }
@@ -116,9 +110,6 @@ body {
     width: 300px;
     padding: 20px;
 
-    /* width: 40%;
-    padding: 9%; */
-
     background-color: #ca4f4f;
     border-radius: 10px;
     margin: 20px auto 0;
@@ -187,8 +178,6 @@ body {
   .setList {
     list-style: none;
     padding: 0;
-    /* max-height: 100px;
-    overflow-y: scroll; */
   }
 
   .setListContainer {
@@ -269,13 +258,6 @@ body {
     font: 0.67em "Fira Sans", sans-serif;
   }
 
-  /* .deleteWorkoutButton {
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -80px;
-    margin-left: 370px;
-  } */
-
   .deleteWorkoutButton {
     position: absolute;
     top: 40%;
@@ -319,10 +301,6 @@ body {
     max-width: 60%;
     padding-left: 10px;
   }
-
-  /* .individualWorkout:hover {
-    background-color: #694141;
-  } */
 
   .workoutNameDisplay {
     display: flex;
