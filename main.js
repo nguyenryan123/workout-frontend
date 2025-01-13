@@ -90,6 +90,7 @@ const app = Vue.createApp({
                 })
         },
         getWorkoutDetails(){
+            if(this.date === '') return
             axios
                 .get("/allWorkoutDetails",{
                     params: {
@@ -348,7 +349,7 @@ const app = Vue.createApp({
     created(){
         this.updateMessage()
         this.getWorkouts()
-        this.fillCalendarDays(this.calendar.year,this.calendar.month)
         this.selectDay(new Date().getDate())
+        this.fillCalendarDays(this.calendar.year,this.calendar.month)
     }
 })
