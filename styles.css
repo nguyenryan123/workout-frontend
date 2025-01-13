@@ -241,10 +241,10 @@ body {
   }
 
   .addSetWorkoutListButton {
+    position: absolute;
+    top: 40%;
+    left: 71%;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -80px;
-    margin-left: 280px;
     color: white;
   }
 
@@ -256,10 +256,10 @@ body {
   }
 
   .editWorkoutNameButton {
+    position: absolute;
+    top: 40%;
+    left: 81.1%;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -80px;
-    margin-left: 325px;
   }
 
   .editWorkoutNameButton > p{
@@ -269,12 +269,18 @@ body {
     font: 0.67em "Fira Sans", sans-serif;
   }
 
-  .deleteWorkoutButton {
+  /* .deleteWorkoutButton {
     border-radius: 5px;
     margin: 0 auto;
-    /* margin-top: -28px; */
     margin-top: -80px;
     margin-left: 370px;
+  } */
+
+  .deleteWorkoutButton {
+    position: absolute;
+    top: 40%;
+    left: 91%;
+    border-radius: 5px;
   }
 
   .deleteWorkoutButton > p{
@@ -296,15 +302,11 @@ body {
   }
 
   .individualWorkout {
-    /* cursor: pointer; */
+    position: relative;
     background-color: #cbdad5;
     margin: 0px auto;
     margin-bottom: 0px; /* Adjust for spacing between sets */
     width: 99.5%;
-    /* text-align: center; */
-    /* color: white; */
-    font-size: 170%;
-    /* border: 1px solid gray; */
     font: 1.7em "Fira Sans", sans-serif;
     user-select: none;
     border-radius: 5px;
