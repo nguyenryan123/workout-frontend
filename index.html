@@ -13,9 +13,6 @@
         <div id="app">
             <h1>{{ message }}</h1>
 
-            <!-- <button @click="getAccounts">get accounts</button> -->
-            <!-- <button v-show="loggedIn" @click="logout">logout</button> -->
-
             <div>
                 <login-form v-show="!loggedIn && currentView === 'loginScreen'" @update-message="updateMessage" @change-view="changeView('signupScreen')"></login-form>
                 <signup-form v-show="!loggedIn && currentView === 'signupScreen'" @change-view="changeView('loginScreen')"></signup-form>

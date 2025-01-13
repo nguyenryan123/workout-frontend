@@ -42,7 +42,7 @@ const app = Vue.createApp({
             this.updateLoggedIn()
             this.changeView('loginScreen')
         },
-        updateMessage(){
+        updateMessage(){ //update message verifies login. todo : dont do it like this
             const name = localStorage.getItem('name')
             const userid = localStorage.getItem('userid')
             
