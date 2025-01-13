@@ -243,7 +243,7 @@ body {
   .addSetWorkoutListButton {
     border-radius: 5px;
     margin: 0 auto;
-    margin-top: -28px;
+    margin-top: -80px;
     margin-left: 280px;
     color: white;
   }
@@ -258,7 +258,7 @@ body {
   .editWorkoutNameButton {
     border-radius: 5px;
     margin: 0 auto;
-    margin-top: -28px;
+    margin-top: -80px;
     margin-left: 325px;
   }
 
@@ -272,7 +272,8 @@ body {
   .deleteWorkoutButton {
     border-radius: 5px;
     margin: 0 auto;
-    margin-top: -28px;
+    /* margin-top: -28px; */
+    margin-top: -80px;
     margin-left: 370px;
   }
 
@@ -312,6 +313,10 @@ body {
     border: 1px solid #3a415a;
   }
 
+  .individualWorkout > p {
+    max-width: 60%;
+  }
+
   /* .individualWorkout:hover {
     background-color: #694141;
   } */
@@ -329,6 +334,9 @@ body {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     font: 1.7em "Fira Sans", sans-serif;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .addSetButtonInHeader{
