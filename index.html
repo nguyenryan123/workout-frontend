@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>workout login</title>
+        <link rel="stylesheet" href="styles.css">
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>{{ message }}</h1>
+
+            <!-- <button @click="getAccounts">get accounts</button> -->
+            <!-- <button v-show="loggedIn" @click="logout">logout</button> -->
+
+            <div>
+                <login-form v-show="!loggedIn && currentView === 'loginScreen'" @update-message="updateMessage" @change-view="changeView('signupScreen')"></login-form>
+                <signup-form v-show="!loggedIn && currentView === 'signupScreen'" @change-view="changeView('loginScreen')"></signup-form>
+            </div>
+            
+            
+
+            <div class="calendar" v-show="showCalendar && loggedIn">
+                <div class="calendar_header">
+                    <div>
+                        <h2 class="month_displayed" :class="{ 'hovered' : isHovered }" @click="toggleDropdown" @mouseover="isHovered = true" @mouseleave="isHovered = false">{{ calendar.monthDisplayed }}</h2>
+                        <div class="dropdown" v-show="showDropdown">
+                            <div v-for="(year, index) in calendar.yearOptions" class="options" @click="selectYear(year)" @mouseover="setDropdownHovered(index, true)" @mouseleave="setDropdownHovered(index, false)" :class="{'hovered': dropdownHovered[index]}">
+                                <div>{{ year }}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <button class="button_left" @click="incrementMonth(-1)">left</button>
+                    <button class="button_right" @click="incrementMonth(1)">right</button>
+                </div>
+
+                <div class="calendar_wrapper">
+                    <div v-for="(calendarDay, index) in calendar.calendarDays" @click="selectDay(calendarDay)" :style="{color: calendar.daysContainingWorkout.includes(calendarDay) ? 'gold' : 'white'}" :class="{'hovered': daysHovered[index]}" @mouseover="setDaysHovered(index, true, calendarDay)" @mouseleave="setDaysHovered(index, false, calendarDay)">
+                        {{ calendarDay }}
+                    </div>
+                </div>
+            </div>
+            
+
+
+
+
+            <div v-show="loggedIn">
+
+                <!-- <p @click="toggleCalendar">date: {{ date }}</p> -->
+                <div class="workoutList" v-show="currentView === 'workoutList'">
+
+                    <div class="addNewWorkoutButton" @click="addWorkout"><p>Create New Workout</p></div>
+                    <ul>
+                        <li v-for="workout in workouts" :key="workout.workoutId">
+                            <div class="individualWorkout">
+                                {{ workout.workoutName }}
+                                <div class="workoutListButtons">
+                                    <div class="addSetWorkoutListButton" @click="selectWorkout(workout.workoutId); addSet(); changeView('home')"><p>+</p></div>
+                                    <div class="editWorkoutNameButton" @click="selectWorkout(workout.workoutId); editWorkout()"><p>✏️</p></div>
+                                    <div class="deleteWorkoutButton" @click="selectWorkout(workout.workoutId); deleteWorkout()"><p>🗑️</p></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- views: home, workoutList, loginScreen -->
+
+                <div class="setListContainer">
+                    <div class="setList" v-show="currentView === 'home'">
+                        <ul>
+                            <li v-for="workoutDetail in workoutDetails" :key="workoutDetail.workout_id" class="setItem">
+                                <div class="workoutNameDisplay">
+                                    {{ workoutDetail.workout_name}}
+                                    <div class="addSetButtonInHeader" @click="selectWorkout(workoutDetail.workout_id); addSet()">
+                                        <p>+</p>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li v-for="set in workoutDetail.sets">
+                                        <div @click="selectSet(set.setId)" class="individualSet" :class="{selected: selectedSet === set.setId}">weight: {{ set.weight }} reps: {{ set.reps }}</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <div class="footer" v-show="loggedIn">
+                    <div class="footer-content">
+                        <div class="showWhenSetSelected" v-show="selectedSet !== null">
+                            <div class="editButton" @click="editSet(); selectSet(null)">
+                                <p>edit</p>
+                            </div>
+                            
+                            <div class="deleteButton" @click="deleteSet(); selectSet(null)">
+                                <p>delete</p>
+                            </div>
+
+                            <div class="cancelButton" @click="selectSet(null)">
+                                <p>cancel</p>
+                            </div>
+                        </div>
+                        
+                        <div class="showWhenOnWorkoutScreen" v-show="currentView === 'workoutList'">
+                            <div class="goBackButton" @click="changeView('home')">
+                                <p>go back</p>
+                            </div>
+                        </div>
+
+                        <div class="showWhenOnHomePage" v-show="currentView === 'home' && selectedSet === null">
+                            <div class="addWorkoutButton" @click="changeView('workoutList')">
+                                <p>add workout</p>
+                            </div>
+
+                            <div class="logoutButton" @click="logout">
+                                <p>logout</p>
+                            </div>
+
+                            <div class="calendarButton" @click="toggleCalendar">
+                                <p>{{date.substring(8,10) + ' ' + calendar.monthDisplayed }}</p>
+                            </div>
+                        </div>
+
+                        
+
+                        
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+    </body>
+
+    <script src="./main.js"></script>
+    <script src="./components/LoginForm.js"></script>
+    <script src="./components/SignupForm.js"></script>
+
+    <script>
+        axios.defaults.baseURL = 'http://localhost:8080';
+        const mountedApp = app.mount('#app')
+    </script>
+</html>
