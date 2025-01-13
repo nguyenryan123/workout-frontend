@@ -31,22 +31,16 @@ body {
   .calendar_header {
     padding: 10px;
     padding-bottom: 55px;
-    /* width: 382px; */
     width: 365px;
     height: 50px;
     box-sizing: border-box;
     position: relative;
     background-color: #000000;
     border-radius: 5px;
-    /* overflow: hidden; */
   }
   
   .calendar {
     margin: 0 auto;
-    /* margin-left: -150px; */
-    /* margin-top: 50px; */
-    /* left: 50%;
-    top: 30px; */
     position: absolute;
     z-index: 1000;
   }
@@ -116,9 +110,6 @@ body {
     width: 300px;
     padding: 20px;
 
-    /* width: 40%;
-    padding: 9%; */
-
     background-color: #ca4f4f;
     border-radius: 10px;
     margin: 20px auto 0;
@@ -187,8 +178,6 @@ body {
   .setList {
     list-style: none;
     padding: 0;
-    /* max-height: 100px;
-    overflow-y: scroll; */
   }
 
   .setListContainer {
@@ -241,10 +230,10 @@ body {
   }
 
   .addSetWorkoutListButton {
+    position: absolute;
+    top: 40%;
+    left: 71%;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -28px;
-    margin-left: 280px;
     color: white;
   }
 
@@ -256,10 +245,10 @@ body {
   }
 
   .editWorkoutNameButton {
+    position: absolute;
+    top: 40%;
+    left: 81.1%;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -28px;
-    margin-left: 325px;
   }
 
   .editWorkoutNameButton > p{
@@ -270,10 +259,10 @@ body {
   }
 
   .deleteWorkoutButton {
+    position: absolute;
+    top: 40%;
+    left: 91%;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-top: -28px;
-    margin-left: 370px;
   }
 
   .deleteWorkoutButton > p{
@@ -295,15 +284,11 @@ body {
   }
 
   .individualWorkout {
-    /* cursor: pointer; */
+    position: relative;
     background-color: #cbdad5;
     margin: 0px auto;
     margin-bottom: 0px; /* Adjust for spacing between sets */
     width: 99.5%;
-    /* text-align: center; */
-    /* color: white; */
-    font-size: 170%;
-    /* border: 1px solid gray; */
     font: 1.7em "Fira Sans", sans-serif;
     user-select: none;
     border-radius: 5px;
@@ -312,9 +297,10 @@ body {
     border: 1px solid #3a415a;
   }
 
-  /* .individualWorkout:hover {
-    background-color: #694141;
-  } */
+  .individualWorkout > p {
+    max-width: 60%;
+    padding-left: 10px;
+  }
 
   .workoutNameDisplay {
     display: flex;
@@ -329,6 +315,9 @@ body {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     font: 1.7em "Fira Sans", sans-serif;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .addSetButtonInHeader{

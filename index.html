@@ -49,14 +49,13 @@
 
             <div v-show="loggedIn">
 
-                <!-- <p @click="toggleCalendar">date: {{ date }}</p> -->
                 <div class="workoutList" v-show="currentView === 'workoutList'">
 
                     <div class="addNewWorkoutButton" @click="addWorkout"><p>Create New Workout</p></div>
                     <ul>
                         <li v-for="workout in workouts" :key="workout.workoutId">
                             <div class="individualWorkout">
-                                {{ workout.workoutName }}
+                                <p>{{ workout.workoutName }}</p>
                                 <div class="workoutListButtons">
                                     <div class="addSetWorkoutListButton" @click="selectWorkout(workout.workoutId); addSet(); changeView('home')"><p>+</p></div>
                                     <div class="editWorkoutNameButton" @click="selectWorkout(workout.workoutId); editWorkout()"><p>✏️</p></div>
